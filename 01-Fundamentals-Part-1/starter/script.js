@@ -47,8 +47,36 @@ console.log(typeof year);
 console.log(typeof null);
 */
 
-let age = 29;
-age = 30;
+// let age = 29;
+// age = 30;
 
-const birthYear = 1992;
-//cannot be reassigned
+// const birthYear = 1992;
+// //cannot be reassigned
+
+// //Basic Operators
+// //Math Operators
+// const now = 2021;
+// const ageJap = now - 1992;
+// const ageSheena = now - 1994;
+// console.log(ageJap, ageSheena);
+
+// console.log(ageJap * 2, ageJap / 10, 2 ** 3);
+
+// const firstName = "Jon";
+// const lastName = "Snow";
+// console.log(firstName + " " + lastName);
+
+// // Assignment Operators
+// let x = 10 + 5;
+// x += 10; //x = x + 10
+// x *= 4; // x = x* 4
+// x++;
+// x--;
+
+// console.log(x);
+
+// //Comparison Operators
+// console.log(ageJap > ageSheena);
+// console.log(ageSheena >= 18);
+
+// const isFullAge = ageSheena >= 18;
