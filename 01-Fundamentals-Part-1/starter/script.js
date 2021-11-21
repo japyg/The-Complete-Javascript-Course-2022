@@ -5,6 +5,8 @@
 // num = (40 + 2 - 5) * 10;
 // console.log(num);*/
 
+//Values and variables
+/*
 let js = "amazing";
 console.log((40 + 2 - 5) * 10);
 
@@ -17,13 +19,36 @@ let myCurrentJob = "Accountant";
 let myDreamJob = "Programmer";
 console.log(myCurrentJob);
 console.log(myDreamJob);
+*/
 
-//NOTES:
+//Data Types
 
-/*1. Variables should only contain letters, numbers, underscores and dollar sign.
-2. Variables should never start with a number.
-3. For naming convention, variables should always start with smallcase. Uppercase is for OOP's. 
-4. All letters in uppercase are for constants.
-5. There are variables that cannot be used because they are reserved like 'function'. Meaning, they are used by JS for a certain purpose.
-6. JS uses camelCase. 
-7. The word 'name' can be used but discouraged. Use some other term like 'firstName', etc.. */
+/*let javaScriptIsFun = true;
+console.log(javaScriptIsFun);
+
+// console.log(typeof true);
+console.log(typeof javaScriptIsFun);
+// console.log(typeof 23);
+// console.log(typeof "Hello");
+
+javaScriptIsFun = "YES!";
+console.log(typeof javaScriptIsFun);
+
+//undefined
+let year;
+console.log(year);
+console.log(typeof year);
+
+//reassign to a new variable without the let
+year = 2021;
+console.log(year);
+console.log(typeof year);
+
+console.log(typeof null);
+*/
+
+let age = 29;
+age = 30;
+
+const birthYear = 1992;
+//cannot be reassigned
