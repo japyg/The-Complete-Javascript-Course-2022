@@ -50,3 +50,62 @@
 //     `John's BMI (${johnBMI2}) is higher than Mark's BMI (${markBMI2})!`
 //   );
 // }
+
+//Coding Challenge 3
+// const dolphinesAverageScore = ((96 + 108 + 89) / 3).toFixed(2);
+// const koalasAverageScore = ((88 + 91 + 110) / 3).toFixed(2);
+// console.log(dolphinesAverageScore, koalasAverageScore);
+
+// if (dolphinesAverageScore > koalasAverageScore) {
+//   console.log(`Dolphines team is the winner!`);
+// } else if (koalasAverageScore === dolphinesAverageScore) {
+//   console.log(`It's a draw!`);
+// } else {
+//   console.log(`Koalas team is the winner!`);
+// }
+
+//Bonus 1
+// const dolphinesAverageScore = ((97 + 112 + 101) / 3).toFixed(2);
+// const koalasAverageScore = ((109 + 95 + 123) / 3).toFixed(2);
+// console.log(dolphinesAverageScore, koalasAverageScore);
+
+// const minScore = 100;
+// if (
+//   dolphinesAverageScore >= minScore &&
+//   dolphinesAverageScore > koalasAverageScore
+// ) {
+//   console.log(`Dolphines team is the winner`);
+// } else if (
+//   koalasAverageScore >= 100 &&
+//   koalasAverageScore > dolphinesAverageScore
+// ) {
+//   console.log(`Koala's team is the winner`);
+// } else {
+//   console.log(`No winner`);
+// }
+
+//Bonus 2
+// const dolphinesAverageScore = ((97 + 112 + 101) / 3).toFixed(2);
+// const koalasAverageScore = ((109 + 95 + 106) / 3).toFixed(2);
+// console.log(dolphinesAverageScore, koalasAverageScore);
+
+// const minScore = 100;
+// if (
+//   dolphinesAverageScore >= minScore &&
+//   dolphinesAverageScore > koalasAverageScore
+// ) {
+//   console.log(`Dolphines team is the winner`);
+// } else if (
+//   koalasAverageScore >= 100 &&
+//   koalasAverageScore > dolphinesAverageScore
+// ) {
+//   console.log(`Koala's team is the winner`);
+// } else if (
+//   dolphinesAverageScore === koalasAverageScore &&
+//   dolphinesAverageScore &&
+//   koalasAverageScore >= minScore
+// ) {
+//   console.log(`It's a draw!`);
+// } else {
+//   console.log(`No winner`);
+// }
