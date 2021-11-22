@@ -90,3 +90,14 @@ console.log(typeof null);
 // const japNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}!`;
 
 // console.log(japNew);
+
+//If/Else Statements
+// const age = 11;
+// const isOldEnough = age >= 18;
+// const yearsLeft = 18 - age;
+
+// if (isOldEnough) {
+//   console.log(`Jap can start driving`);
+// } else {
+//   console.log(`Jap is not old enough. Wait another ${yearsLeft} years`);
+// }
