@@ -80,3 +80,13 @@ console.log(typeof null);
 // console.log(ageSheena >= 18);
 
 // const isFullAge = ageSheena >= 18;
+
+//Template Literals
+// const firstName = "Jap";
+// const job = "Accountant";
+// const birthYear = 1992;
+// const year = 2021;
+
+// const japNew = `I'm ${firstName}, a ${year - birthYear} year old ${job}!`;
+
+// console.log(japNew);

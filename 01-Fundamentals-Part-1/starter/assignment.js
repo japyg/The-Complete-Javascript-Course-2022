@@ -56,3 +56,7 @@
 //   " speak " +
 //   language;
 // console.log(description);
+
+//Lecture: Template Literals
+// let description = `${country} is in ${continent} and its ${population} people speak ${language}`;
+// console.log(description);
