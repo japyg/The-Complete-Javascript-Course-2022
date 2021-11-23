@@ -122,3 +122,8 @@
 //   default:
 //     console.log(`Great language too :D`);
 // }
+
+//Lecture: Ternary Operator
+// population > averagePopulation
+//   ? console.log(`${country}' population is above average.'`)
+//   : console.log(`${country}' population is below average.'`);
