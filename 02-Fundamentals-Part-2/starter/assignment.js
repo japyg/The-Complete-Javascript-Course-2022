@@ -29,9 +29,17 @@
 // console.log(pinas, sokor, china);
 
 //Lecture: Arrow Functions
-// const percentageOfWorld3 = (population) => (population / 7900) * 100;
+const percentageOfWorld3 = (population) => (population / 7900) * 100;
 
 // const pinas = percentageOfWorld3(30);
 // const sokor = percentageOfWorld3(20);
 // const china = percentageOfWorld3(1441);
 // console.log(pinas, sokor, china);
+
+//Lecture: Functions calling other functions
+
+// const describePopulation = (country, population) => {
+//   const perc = percentageOfWorld3(population).toFixed(2);
+//   return `${country} has ${population} million people,  which is about ${perc}% of the world`;
+// };
+// console.log(describePopulation("Philippines", 1441));
