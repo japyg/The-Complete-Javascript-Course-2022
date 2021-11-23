@@ -109,3 +109,17 @@
 // } else {
 //   console.log(`No winner`);
 // }
+
+//Coding Challenge 4: Ternary Operator
+
+//Data 1: Test for bill values 275, 40 and 430
+// const billValue = 430;
+
+// const tip =
+//   billValue >= 50 && billValue <= 300 ? billValue * 0.15 : billValue * 0.2;
+
+// console.log(
+//   `The bill was ${billValue}, the tip was ${tip}, and the total value ${
+//     billValue + tip
+//   } `
+// );
