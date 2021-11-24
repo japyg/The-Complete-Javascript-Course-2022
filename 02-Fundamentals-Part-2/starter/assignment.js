@@ -43,3 +43,18 @@
 //   return `${country} has ${population} million people,  which is about ${perc}% of the world`;
 // };
 // console.log(describePopulation("Philippines", 1441));
+
+//Lecture: Introduction to Arrays
+// const populations = [15, 20, 25, 30];
+// console.log(populations === 4);
+
+// function percentageOfWorld1(population) {
+//   return (population / 7900) * 100;
+// }
+// const pop1 = percentageOfWorld1(populations[0]);
+// const pop2 = percentageOfWorld1(populations[1]);
+// const pop3 = percentageOfWorld1(populations[2]);
+// const pop4 = percentageOfWorld1(populations[3]);
+
+// const percentages = [pop1, pop2, pop3, pop4];
+// console.log(percentages);
