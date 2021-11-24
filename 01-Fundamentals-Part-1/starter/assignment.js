@@ -127,3 +127,18 @@
 // population > averagePopulation
 //   ? console.log(`${country}' population is above average.'`)
 //   : console.log(`${country}' population is below average.'`);
+
+//Lecture: Basic Array Methods
+// const neighbours = ["South Korea", "Japan", "Thailand"];
+
+// neighbours.push("Utopia");
+// console.log(neighbours);
+
+// neighbours.pop();
+// if (!neighbours.includes("Germany")) {
+//   console.log(`Probably not an Asian country :D`);
+// }
+// console.log(neighbours);
+
+// neighbours[neighbours.indexOf("Thailand")] = "Philippines";
+// console.log(neighbours);
