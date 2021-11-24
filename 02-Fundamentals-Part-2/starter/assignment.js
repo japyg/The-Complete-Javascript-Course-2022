@@ -29,7 +29,7 @@
 // console.log(pinas, sokor, china);
 
 //Lecture: Arrow Functions
-const percentageOfWorld3 = (population) => (population / 7900) * 100;
+// const percentageOfWorld3 = (population) => (population / 7900) * 100;
 
 // const pinas = percentageOfWorld3(30);
 // const sokor = percentageOfWorld3(20);
