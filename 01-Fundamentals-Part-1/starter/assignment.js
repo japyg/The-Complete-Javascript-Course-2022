@@ -142,3 +142,23 @@
 
 // neighbours[neighbours.indexOf("Thailand")] = "Philippines";
 // console.log(neighbours);
+
+//Lecture: Intro to Objects
+// const myCountry = {
+//   country: "Philippines",
+//   capital: "Manila",
+//   language: "Filipino",
+//   population: 15,
+//   neighbours: ["South Korea", "Japan", "Thailand"],
+// };
+
+//Lecture: Dot Notation vs Bracket Notation
+
+// console.log(
+//   `${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`
+// );
+// myCountry.population += 2;
+// console.log(myCountry);
+
+// myCountry["population"] -= 2;
+// console.log(myCountry);
