@@ -186,3 +186,8 @@
 // myCountry.describe();
 // myCountry.checkIsland();
 // console.log(myCountry.isIsland);
+
+//Lecture: The For Loop
+// for (let voter = 1; voter <= 50; voter++) {
+//   console.log(`Voter number ${voter} is currently voting`);
+// }
