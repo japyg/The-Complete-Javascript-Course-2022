@@ -38,3 +38,35 @@
 
 // const total = [bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]];
 // console.log(total);
+
+//Coding Challenge #3
+// const mark = {
+//   fullName: "Mark Miller",
+//   mass: 78,
+//   height: 1.69,
+//   calcBMI: function () {
+//     this.BMI = this.mass / (this.height * this.height);
+//     return this.BMI.toFixed(2);
+//   },
+// };
+// console.log(mark.calcBMI());
+
+// const john = {
+//   fullName: "John Smith",
+//   mass: 92,
+//   height: 1.95,
+//   calcBMI: function () {
+//     this.BMI = this.mass / (this.height * this.height);
+//     return this.BMI.toFixed(2);
+//   },
+// };
+// console.log(john.calcBMI());
+
+// //log the results
+// console.log(
+//   `${mark.BMI > john.BMI ? "Mark" : "John"}'s BMI (${
+//     mark.BMI > john.BMI ? mark.BMI : john.BMI
+//   }) is higher than ${mark.BMI < john.BMI ? "Mark" : "John"}'s BMI (${
+//     mark.BMI < john.BMI ? mark.BMI : john.BMI
+//   })`
+// );
