@@ -116,3 +116,18 @@
 //   percentages2.push((populations2[i] / 7900) * 100);
 // }
 // console.log(percentages2);
+
+//Lecture: Looping Backwards and Loops in Loops
+
+// const listOfNeighbors = [
+//   ["Canada", "Mexico"],
+//   ["Spain"],
+//   ["Norway", "Sweden", "Russia"],
+// ];
+
+// for (i = 0; i < listOfNeighbors.length; i++) {
+//   for (j = 0; j < listOfNeighbors[i].length; j++) {
+//     // console.log();
+//     console.log(`Neighbor: ${listOfNeighbors[i][j]}`);
+//   }
+// }
