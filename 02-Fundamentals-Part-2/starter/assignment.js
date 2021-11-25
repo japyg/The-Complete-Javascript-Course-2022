@@ -131,3 +131,14 @@
 //     console.log(`Neighbor: ${listOfNeighbors[i][j]}`);
 //   }
 // }
+
+//Lecture: While Loops
+// const populations3 = [15, 20, 25, 30];
+// const percentages3 = [];
+
+// let i = 0;
+// while (i < populations3.length) {
+//   percentages3.push((populations3[i] / 7900) * 100);
+//   i++;
+// }
+// console.log(percentages3);
