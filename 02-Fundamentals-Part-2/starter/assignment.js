@@ -58,3 +58,61 @@
 
 // const percentages = [pop1, pop2, pop3, pop4];
 // console.log(percentages);
+
+//Lecture: Intro to Objects
+// const myCountry = {
+//   country: "Philippines",
+//   capital: "Manila",
+//   language: "Filipino",
+//   population: 15,
+//   neighbours: ["South Korea", "Japan", "Thailand"],
+// };
+
+//Lecture: Dot Notation vs Bracket Notation
+
+// console.log(
+//   `${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`
+// );
+// myCountry.population += 2;
+// console.log(myCountry);
+
+// myCountry["population"] -= 2;
+// console.log(myCountry);
+
+//Lecture: Object Methods
+
+// const myCountry = {
+//   country: "Philippines",
+//   capital: "Manila",
+//   language: "Filipino",
+//   population: 15,
+//   neighbours: ["South Korea", "Japan", "Thailand"],
+
+//   describe: function () {
+//     console.log(
+//       ` ${this.country} has ${this.population} million ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.`
+//     );
+//   },
+
+//   checkIsland: function () {
+//     this.isIsland = this.neighbours.length === 0 ? true : false;
+//     return this.isIsland;
+//   },
+// };
+// myCountry.describe();
+// myCountry.checkIsland();
+// console.log(myCountry.isIsland);
+
+//Lecture: The For Loop
+// for (let voter = 1; voter <= 50; voter++) {
+//   console.log(`Voter number ${voter} is currently voting`);
+// }
+
+//Lecture: Looping Arrays
+// const populations2 = [15, 20, 25, 30];
+// const percentages2 = [];
+
+// for (let i = 0; i < populations2.length; i++) {
+//   percentages2.push((populations2[i] / 7900) * 100);
+// }
+// console.log(percentages2);
