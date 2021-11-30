@@ -69,37 +69,84 @@
 //The THIS Keyword in Practice
 // console.log(this);
 
-const calcAge = function (birthYear) {
-  console.log(2037 - birthYear);
-  console.log(this);
-};
+// const calcAge = function (birthYear) {
+//   console.log(2037 - birthYear);
+//   console.log(this);
+// };
 
-calcAge(1992);
+// calcAge(1992);
 
-const calcAgeArrow = birthYear => {
-  console.log(2037 - birthYear);
-  console.log(this);
-};
+// const calcAgeArrow = birthYear => {
+//   console.log(2037 - birthYear);
+//   console.log(this);
+// };
 
-calcAgeArrow(1992);
+// calcAgeArrow(1992);
 
+// const jap = {
+//   year: 1992,
+//   calcAge: function () {
+//     console.log(this);
+//     console.log(2037 - this.year);
+//   },
+// };
+
+// jap.calcAge();
+
+// const matilda = {
+//   year: 2000,
+// };
+
+// matilda.calcAge = jap.calcAge;
+// console.log(matilda);
+// matilda.calcAge();
+
+// const f = jap.calcAge;
+// f();
+
+//Regular Functions vs Arrow Functions
+var firstName = `Matilda`;
 const jap = {
+  firstName: 'Jap',
   year: 1992,
   calcAge: function () {
     console.log(this);
     console.log(2037 - this.year);
+
+    //Solution 1
+    // const self = this;
+    // const isMillenial = function () {
+    //   console.log(self);
+    //   // console.log(this.year >= 1981 && this.year <= 1996);
+    //   console.log(self.year >= 1981 && self.year <= 1996);
+    // };
+
+    //Solution 2
+    const isMillenial = () => {
+      console.log(this);
+      // console.log(this.year >= 1981 && this.year <= 1996);
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+    isMillenial();
   },
+  greet: () => console.log(`Hey ${this.firstName}`),
 };
 
+jap.greet();
 jap.calcAge();
+//the var created a property in the global window
+//arrow functions do not have their own this keyword but will access its surrounding function which is the window
 
-const matilda = {
-  year: 2000,
+//Arguments Keyword
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
 };
+// addExpr(2, 5);
+// addExpr(2, 5, 3);
 
-matilda.calcAge = jap.calcAge;
-console.log(matilda);
-matilda.calcAge();
-
-const f = jap.calcAge;
-f();
+var addArrow = (a, b) => {
+  console.log(arguments);
+  return a + b;
+};
+addArrow(2, 5, 3);
