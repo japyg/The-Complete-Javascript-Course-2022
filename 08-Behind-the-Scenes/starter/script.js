@@ -105,48 +105,65 @@
 // f();
 
 //Regular Functions vs Arrow Functions
-var firstName = `Matilda`;
-const jap = {
+// var firstName = `Matilda`;
+// const jap = {
+//   firstName: 'Jap',
+//   year: 1992,
+//   calcAge: function () {
+//     console.log(this);
+//     console.log(2037 - this.year);
+
+//     //Solution 1
+//     // const self = this;
+//     // const isMillenial = function () {
+//     //   console.log(self);
+//     //   // console.log(this.year >= 1981 && this.year <= 1996);
+//     //   console.log(self.year >= 1981 && self.year <= 1996);
+//     // };
+
+//     //Solution 2
+//     const isMillenial = () => {
+//       console.log(this);
+//       // console.log(this.year >= 1981 && this.year <= 1996);
+//       console.log(this.year >= 1981 && this.year <= 1996);
+//     };
+//     isMillenial();
+//   },
+//   greet: () => console.log(`Hey ${this.firstName}`),
+// };
+
+// jap.greet();
+// jap.calcAge();
+// //the var created a property in the global window
+// //arrow functions do not have their own this keyword but will access its surrounding function which is the window
+
+// //Arguments Keyword
+// const addExpr = function (a, b) {
+//   console.log(arguments);
+//   return a + b;
+// };
+// // addExpr(2, 5);
+// // addExpr(2, 5, 3);
+
+// var addArrow = (a, b) => {
+//   console.log(arguments);
+//   return a + b;
+// };
+// addArrow(2, 5, 3);
+
+//Primitives vs Objects
+let age = 30;
+let oldAge = age;
+age = 31;
+console.log(age);
+console.log(oldAge);
+
+const me = {
   firstName: 'Jap',
-  year: 1992,
-  calcAge: function () {
-    console.log(this);
-    console.log(2037 - this.year);
-
-    //Solution 1
-    // const self = this;
-    // const isMillenial = function () {
-    //   console.log(self);
-    //   // console.log(this.year >= 1981 && this.year <= 1996);
-    //   console.log(self.year >= 1981 && self.year <= 1996);
-    // };
-
-    //Solution 2
-    const isMillenial = () => {
-      console.log(this);
-      // console.log(this.year >= 1981 && this.year <= 1996);
-      console.log(this.year >= 1981 && this.year <= 1996);
-    };
-    isMillenial();
-  },
-  greet: () => console.log(`Hey ${this.firstName}`),
+  age: 29,
 };
 
-jap.greet();
-jap.calcAge();
-//the var created a property in the global window
-//arrow functions do not have their own this keyword but will access its surrounding function which is the window
-
-//Arguments Keyword
-const addExpr = function (a, b) {
-  console.log(arguments);
-  return a + b;
-};
-// addExpr(2, 5);
-// addExpr(2, 5, 3);
-
-var addArrow = (a, b) => {
-  console.log(arguments);
-  return a + b;
-};
-addArrow(2, 5, 3);
+const friend = me;
+friend.age = 27;
+console.log('Friend:', friend);
+console.log('Friend:', me);
