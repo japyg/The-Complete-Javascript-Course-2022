@@ -5,6 +5,24 @@
 //   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // // Data needed for first part of the section
+
+const weekDays = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'];
+
+const openingHours = {
+  [weekDays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -12,7 +30,11 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  order: function (starterIndex, mainIndex) {
+  //ES6 enhanced object literals
+  openingHours,
+
+  //ES6 feature where functions can be shortened below
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
@@ -36,25 +58,10 @@ const restaurant = {
   orderPizza: function (mainIngredient, ...otherIngredients) {
     console.log(mainIngredient, otherIngredients);
   },
-
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
 };
 
 //For-of Loop
-const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+// const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
 // console.log(menu);
 
 // for (const item of menu) console.log(item);
@@ -65,9 +72,9 @@ const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
 // }
 
 //destructuring the items
-for (const [item, index] of menu.entries()) {
-  console.log(`${item + 1}: ${index}`);
-}
+// for (const [item, index] of menu.entries()) {
+//   console.log(`${item + 1}: ${index}`);
+// }
 
 //another method
 // console.log(...menu.entries());
