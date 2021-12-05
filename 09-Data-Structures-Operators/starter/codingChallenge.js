@@ -63,11 +63,11 @@ const game = {
 // }
 
 //Bonus
-const scorers = {};
-for (const player of game.scored) {
-  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
-}
-console.log(scorers);
+// const scorers = {};
+// for (const player of game.scored) {
+//   scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+// }
+// console.log(scorers);
 //1
 // const [players1, players2] = game.players;
 // console.log(players1, players2);

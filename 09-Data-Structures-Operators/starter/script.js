@@ -59,6 +59,26 @@ const restaurant = {
     console.log(mainIngredient, otherIngredients);
   },
 };
+
+//Sets
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+
+const staffUnique = new Set(staff);
+console.log(staffUnique);
+
+console.log(staffUnique.size);
+const arr = [...staffUnique];
+console.log(arr);
+
+// staffUnique.add('Driver');
+// console.log(staffUnique);
+
+// staffUnique.delete('Driver');
+// console.log(staffUnique);
+
+// staffUnique.clear();
+// console.log(staffUnique);
+
 //Looping Objects
 
 //Property Names
