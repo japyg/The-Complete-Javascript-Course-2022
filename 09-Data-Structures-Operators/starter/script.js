@@ -59,6 +59,30 @@ const restaurant = {
     console.log(mainIngredient, otherIngredients);
   },
 };
+//Looping Objects
+
+//Property Names
+const properties = Object.keys(openingHours);
+// console.log(properties);
+let openStr = `We are open on ${properties.length} days: `;
+
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+// console.log(openStr);
+
+//Values
+const values = Object.values(openingHours);
+// console.log(values);
+
+//Entries
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+for (const [key, { open, close }] of entries) {
+  // console.log(key, open, close);
+  console.log(`On ${key}, we open at ${open} and close at ${close}`);
+}
 
 //Optional Chaining
 
@@ -66,25 +90,25 @@ const restaurant = {
 // console.log(restaurant.openingHours?.mon?.close);
 
 //Example application
-const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+// const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
-for (const day of days) {
-  const open = restaurant.openingHours[day]?.open ?? 'closed';
-  console.log(`On ${day}, the restaurant opens at ${open}`);
-}
+// for (const day of days) {
+//   const open = restaurant.openingHours[day]?.open ?? 'closed';
+//   console.log(`On ${day}, the restaurant opens at ${open}`);
+// }
 
-//Methods
-console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
-console.log(restaurant.orderFood?.(0, 1) ?? 'Method does not exist');
+// //Methods
+// console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+// console.log(restaurant.orderFood?.(0, 1) ?? 'Method does not exist');
 
-//Arrays
-const users = [
-  {
-    name: 'Jap',
-    email: 'sample@mail.com',
-  },
-];
-console.log(users[0]?.name ?? 'User array empty');
+// //Arrays
+// const users = [
+//   {
+//     name: 'Jap',
+//     email: 'sample@mail.com',
+//   },
+// ];
+// console.log(users[0]?.name ?? 'User array empty');
 
 //For-of Loop
 // const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
