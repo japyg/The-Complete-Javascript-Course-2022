@@ -39,8 +39,37 @@ const game = {
   },
 };
 
+//Coding Challenge 2
 //1
-const [players1, players2] = game.players;
+// // for (const [index, player] of game.scored.entries()) {
+//   // console.log(`Goal ${index + 1}: ${player}`);
+// }
+
+//2
+// let sum = 0;
+// for (const oddValues of Object.values(game.odds)) {
+//   // console.log(oddValues);
+//   sum += oddValues;
+// }
+// const averageOdds = console.log(sum / 3);
+
+//3
+
+// for (const [team, odd] of Object.entries(game.odds)) {
+//   const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+//   // console.log(teamStr);
+
+//   console.log(`Odd of ${teamStr}: ${odd}`);
+// }
+
+//Bonus
+const scorers = {};
+for (const player of game.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+}
+console.log(scorers);
+//1
+// const [players1, players2] = game.players;
 // console.log(players1, players2);
 
 //2
