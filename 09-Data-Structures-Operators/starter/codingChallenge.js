@@ -167,9 +167,9 @@ Some_Variable
   calculate_AGE
 delayed_departure
 */
-document.body.append(document.createElement('textarea'));
+// document.body.append(document.createElement('textarea'));
 
-document.body.append(document.createElement('button'));
+// document.body.append(document.createElement('button'));
 
 //my solution in a separate function
 // const camelCase = function (variables) {
@@ -189,17 +189,16 @@ document.body.append(document.createElement('button'));
 // camelCase(' calculate_AGE');
 // camelCase('delayed_departure');
 
-document.querySelector('button').addEventListener('click', function () {
-  const text = document.querySelector('textarea').value;
-  const rows = text.split('\n');
-  // console.log(arr);
+// document.querySelector('button').addEventListener('click', function () {
+//   const text = document.querySelector('textarea').value;
+//   const rows = text.split('\n');
 
-  for (const [index, row] of rows.entries()) {
-    const [first, second] = row.toLowerCase().trim().split('_');
-    const output = `${first}${second.replace(
-      second[0],
-      second[0].toUpperCase()
-    )}`;
-    console.log(`${output.padEnd(20, ' ')}${'✅'.repeat(index + 1)}`);
-  }
-});
+//   for (const [index, row] of rows.entries()) {
+//     const [first, second] = row.toLowerCase().trim().split('_');
+//     const output = `${first}${second.replace(
+//       second[0],
+//       second[0].toUpperCase()
+//     )}`;
+//     console.log(`${output.padEnd(20, ' ')}${'✅'.repeat(index + 1)}`);
+//   }
+// });
