@@ -157,3 +157,49 @@ const game = {
 //   const halfStr = time <= 45 ? '[First Half]' : '[Second Half]';
 //   console.log(`${halfStr} ${time}: ${event}`);
 // }
+
+// Coding Challenge #4
+/* 
+Test data (pasted to textarea, including spaces):
+underscore_case
+ first_name
+Some_Variable
+  calculate_AGE
+delayed_departure
+*/
+document.body.append(document.createElement('textarea'));
+
+document.body.append(document.createElement('button'));
+
+//my solution in a separate function
+// const camelCase = function (variables) {
+//   const varFormat = variables.toLowerCase().replace('_', ' ').trim().split(' ');
+//   // console.log(varFormat[1]);
+
+//   const upp = varFormat[1][0].slice(0).toUpperCase() + varFormat[1].slice(1);
+//   // console.log(upp);
+
+//   // const camel = varFormat[0].join(upp);
+//   console.log(varFormat[0] + upp);
+// };
+
+// camelCase('underscore_case');
+// camelCase('Some_Variable');
+// camelCase(' first_name');
+// camelCase(' calculate_AGE');
+// camelCase('delayed_departure');
+
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const rows = text.split('\n');
+  // console.log(arr);
+
+  for (const [index, row] of rows.entries()) {
+    const [first, second] = row.toLowerCase().trim().split('_');
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+    console.log(`${output.padEnd(20, ' ')}${'✅'.repeat(index + 1)}`);
+  }
+});

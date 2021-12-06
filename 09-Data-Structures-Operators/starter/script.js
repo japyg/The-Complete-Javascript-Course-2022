@@ -4,62 +4,62 @@
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-console.log('a+very+nice+string'.split('+'));
-console.log('Jap de Guzman'.split(' '));
+// console.log('a+very+nice+string'.split('+'));
+// console.log('Jap de Guzman'.split(' '));
 
-const [firstName, l, lastName] = 'Jap de Guzman'.split(' ');
-console.log(firstName, l, lastName);
+// const [firstName, l, lastName] = 'Jap de Guzman'.split(' ');
+// console.log(firstName, l, lastName);
 
-const newName = [
-  'Ms.',
-  firstName,
-  l.toUpperCase(),
-  lastName.toUpperCase(),
-].join(' ');
-console.log(newName);
+// const newName = [
+//   'Ms.',
+//   firstName,
+//   l.toUpperCase(),
+//   lastName.toUpperCase(),
+// ].join(' ');
+// console.log(newName);
 
-const capitalizeName = function (name) {
-  const names = name.split(' ');
-  // console.log(names);
-  const namesUpper = [];
+// const capitalizeName = function (name) {
+//   const names = name.split(' ');
+//   // console.log(names);
+//   const namesUpper = [];
 
-  for (const n of names) {
-    namesUpper.push(n[0].toUpperCase() + n.slice(1));
-    // namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
-  }
-  // console.log(namesUpper);
+//   for (const n of names) {
+//     namesUpper.push(n[0].toUpperCase() + n.slice(1));
+//     // namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+//   }
+//   // console.log(namesUpper);
 
-  console.log(namesUpper.join(' '));
-};
+//   console.log(namesUpper.join(' '));
+// };
 
-capitalizeName('jessica and smith davis');
-capitalizeName('jonas schmedtmann');
+// capitalizeName('jessica and smith davis');
+// capitalizeName('jonas schmedtmann');
 
-// Padding
-const message = 'Go to gate 23!';
-console.log(message.padStart(25, '-').padEnd(35, '+'));
+// // Padding
+// const message = 'Go to gate 23!';
+// console.log(message.padStart(25, '-').padEnd(35, '+'));
 
-//Real Life Application
-const maskCreditcard = function (number) {
-  // const str = number + '';
-  const str = String(number);
-  const last = str.slice(-4);
-  // console.log(last);
-  return last.padStart(str.length, '*');
-};
+// //Real Life Application
+// const maskCreditcard = function (number) {
+//   // const str = number + '';
+//   const str = String(number);
+//   const last = str.slice(-4);
+//   // console.log(last);
+//   return last.padStart(str.length, '*');
+// };
 
-console.log(maskCreditcard(1234567823));
-console.log(maskCreditcard('4321567354'));
+// console.log(maskCreditcard(1234567823));
+// console.log(maskCreditcard('4321567354'));
 
-// Repeat Method
-const message2 = 'Bad Weather... All Departures... Delayed... ';
-// console.log(message2.repeat(3));
+// // Repeat Method
+// const message2 = 'Bad Weather... All Departures... Delayed... ';
+// // console.log(message2.repeat(3));
 
-const planesInLine = function (n) {
-  console.log(`There are ${n} planes in line ${'🛫'.repeat(n)}`);
-};
-planesInLine(5);
-planesInLine(10);
+// const planesInLine = function (n) {
+//   console.log(`There are ${n} planes in line ${'🛫'.repeat(n)}`);
+// };
+// planesInLine(5);
+// planesInLine(10);
 
 ////////////////
 //Working with strings part II
