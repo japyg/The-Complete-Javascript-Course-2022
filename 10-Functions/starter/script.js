@@ -54,29 +54,46 @@
 // newPassport(jap);
 // checkIn(flight, jap);
 
-const oneWord = function (str) {
-  return str.replace(/ /g, ''.toLowerCase());
+// const oneWord = function (str) {
+//   return str.replace(/ /g, ''.toLowerCase());
+// };
+
+// const upperFirstWord = function (str) {
+//   const [first, ...others] = str.split(' ');
+//   return [first.toUpperCase(), ...others].join(' ');
+// };
+
+// // Higher-order function
+// const transformer = function (str, fn) {
+//   console.log(`Original string: ${str}`);
+//   console.log(`Transformed string: ${fn(str)}`);
+
+//   console.log(`Transformed by: ${fn.name}`);
+// };
+
+// transformer('JavaScript is the best!', upperFirstWord);
+// transformer('JavaScript is the best!', oneWord);
+
+// //JS uses callbacks all the time
+// const youRock = function () {
+//   console.log('🤘');
+// };
+// document.body.addEventListener('click', youRock);
+// ['Jap', 'Chikads', 'Zamay'].forEach(youRock);
+
+//Functions returning function
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
 };
 
-const upperFirstWord = function (str) {
-  const [first, ...others] = str.split(' ');
-  return [first.toUpperCase(), ...others].join(' ');
-};
+// const greeterHey = greet('Hey');
+// greeterHey('Jap');
+// greeterHey('Zamay');
 
-// Higher-order function
-const transformer = function (str, fn) {
-  console.log(`Original string: ${str}`);
-  console.log(`Transformed string: ${fn(str)}`);
+// greet('hello')('Jap');
 
-  console.log(`Transformed by: ${fn.name}`);
-};
+const greetArrow = greeting => name => console.log(`${greeting} ${name}`);
 
-transformer('JavaScript is the best!', upperFirstWord);
-transformer('JavaScript is the best!', oneWord);
-
-//JS uses callbacks all the time
-const youRock = function () {
-  console.log('🤘');
-};
-document.body.addEventListener('click', youRock);
-['Jap', 'Chikads', 'Zamay'].forEach(youRock);
+greetArrow('Hi')('Jap');
