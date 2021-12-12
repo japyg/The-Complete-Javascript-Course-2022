@@ -82,18 +82,69 @@
 // ['Jap', 'Chikads', 'Zamay'].forEach(youRock);
 
 //Functions returning function
-const greet = function (greeting) {
-  return function (name) {
-    console.log(`${greeting} ${name}`);
-  };
+// const greet = function (greeting) {
+//   return function (name) {
+//     console.log(`${greeting} ${name}`);
+//   };
+// };
+
+// // const greeterHey = greet('Hey');
+// // greeterHey('Jap');
+// // greeterHey('Zamay');
+
+// // greet('hello')('Jap');
+
+// const greetArrow = greeting => name => console.log(`${greeting} ${name}`);
+
+// greetArrow('Hi')('Jap');
+
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+  book(flightNum, passengerName) {
+    console.log(
+      `${passengerName} booked a seat on ${this.airline} flight ${this.iataCode} ${flightNum}`
+    );
+    this.bookings.push({
+      flight: `${this.iataCode}${flightNum}`,
+      passengerName,
+    });
+  },
+};
+lufthansa.book(239, 'Jap de Guzman');
+lufthansa.book(635, 'Harry Potter');
+console.log(lufthansa);
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
 };
 
-// const greeterHey = greet('Hey');
-// greeterHey('Jap');
-// greeterHey('Zamay');
+const book = lufthansa.book;
 
-// greet('hello')('Jap');
+// Does not work
+// book(23, 'Sarah Williams');
 
-const greetArrow = greeting => name => console.log(`${greeting} ${name}`);
+//Call method
+book.call(eurowings, 23, 'Sarah Williams');
+console.log(eurowings);
 
-greetArrow('Hi')('Jap');
+book.call(lufthansa, 239, 'Ronald Weasley');
+console.log(lufthansa);
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+};
+book.call(swiss, 583, 'Hermione Granger');
+console.log(swiss);
+
+// Apply Method -- not used anymore in JS
+const flightData = [583, 'Albus Dumbledore'];
+book.apply(swiss, flightData);
+console.log(swiss);
+
+book.call(swiss, ...flightData);
