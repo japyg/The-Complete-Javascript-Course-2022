@@ -165,24 +165,24 @@ const bookLX = book.bind(swiss);
 // console.log(eurowings);
 
 //With Event Listeners
-lufthansa.planes = 300;
-lufthansa.buyPlane = function () {
-  console.log(this);
+// lufthansa.planes = 300;
+// lufthansa.buyPlane = function () {
+//   console.log(this);
 
-  this.planes++;
-  console.log(this.planes);
-};
+//   this.planes++;
+//   console.log(this.planes);
+// };
 
-document
-  .querySelector('.buy')
-  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+// document
+//   .querySelector('.buy')
+//   .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
 
-// Partial application
+// // Partial application
 
-const addTax = (rate, value) => value + value * rate;
-// console.log(addTax(0.1, 200));
+// const addTax = (rate, value) => value + value * rate;
+// // console.log(addTax(0.1, 200));
 
-const addVAT = addTax.bind(null, 0.12);
+// const addVAT = addTax.bind(null, 0.12);
 // addVAT = value => value + value * rate;
 
 // console.log(addVAT(100));
@@ -194,12 +194,12 @@ const addVAT = addTax.bind(null, 0.12);
 //     console.log(`${greeting} ${name}`);
 //   };
 // };
-const tax = function (rate) {
-  return function (value) {
-    return rate * value + value;
-  };
-};
+// const tax = function (rate) {
+//   return function (value) {
+//     return rate * value + value;
+//   };
+// };
 
-const vat = tax(0.12);
-console.log(vat(100));
-console.log(vat(200));
+// const vat = tax(0.12);
+// console.log(vat(100));
+// console.log(vat(200));
