@@ -203,3 +203,17 @@ const bookLX = book.bind(swiss);
 // const vat = tax(0.12);
 // console.log(vat(100));
 // console.log(vat(200));
+
+//IIFE
+(function () {
+  console.log('This function will not run again');
+})(); //immediately invoked
+
+//Arrow Function IIFE
+(() => console.log('Arrow function invoked once'))();
+{
+  const isPrivate = 28;
+  var notPrivate = 10;
+}
+// console.log(isPrivate);
+console.log(notPrivate);
