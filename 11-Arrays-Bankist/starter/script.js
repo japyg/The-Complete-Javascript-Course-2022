@@ -74,33 +74,43 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
-let arr = ['a', 'b', 'c', 'd', 'e'];
+// let arr = ['a', 'b', 'c', 'd', 'e'];
 
 // Slice method
-console.log(arr.slice(2));
-console.log(arr.slice(2, 4));
-console.log(arr.slice(-2));
-console.log(arr.slice(-1));
-console.log(arr.slice(1, -2));
-console.log(arr.slice()); //shallow copy
-console.log([...arr]); //also a shallow copy
+// console.log(arr.slice(2));
+// console.log(arr.slice(2, 4));
+// console.log(arr.slice(-2));
+// console.log(arr.slice(-1));
+// console.log(arr.slice(1, -2));
+// console.log(arr.slice()); //shallow copy
+// console.log([...arr]); //also a shallow copy
 
-// Splice Method
-console.log(arr.splice(-1));
-console.log(arr);
-arr.splice(1, 2);
-console.log(arr);
+// // Splice Method
+// console.log(arr.splice(-1));
+// console.log(arr);
+// arr.splice(1, 2);
+// console.log(arr);
 
 //Reverse Method
-arr = ['a', 'b', 'c', 'd', 'e'];
-const arr2 = ['j', 'i', 'h', 'g', 'f'];
-console.log(arr2.reverse());
-console.log(arr2);
+// arr = ['a', 'b', 'c', 'd', 'e'];
+// const arr2 = ['j', 'i', 'h', 'g', 'f'];
+// console.log(arr2.reverse());
+// console.log(arr2);
 
-//CONCAT
-const letters = arr.concat(arr2);
-console.log(letters);
-console.log([...arr, ...arr2]); //same method
+// //CONCAT
+// const letters = arr.concat(arr2);
+// console.log(letters);
+// console.log([...arr, ...arr2]); //same method
 
-//JOIN
-console.log(letters.join(' - '));
+// //JOIN
+// console.log(letters.join(' - '));
+
+// //AT Method
+// const arr3 = [10, 20, 30];
+// console.log(arr3[0]);
+// console.log(arr3.at(0));
+
+// //getting last array element
+// console.log(arr3[arr3.length - 1]);
+// console.log(arr3.slice(-1)[0]);
+// console.log(arr3.at(-1)); //at method ES6
