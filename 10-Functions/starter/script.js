@@ -236,37 +236,37 @@ const bookLX = book.bind(swiss);
 // console.dir(booker);
 
 //Example 1
-let f;
+// let f;
 
-const g = function () {
-  const a = 23;
-  f = function () {
-    console.log(a * 2);
-  };
-};
-g();
-f();
+// const g = function () {
+//   const a = 23;
+//   f = function () {
+//     console.log(a * 2);
+//   };
+// };
+// g();
+// f();
 
 //Reassignment of f function
-const h = function () {
-  const b = 1000;
-  f = function () {
-    console.log(b * 2);
-  };
-};
-h();
-f();
+// const h = function () {
+//   const b = 1000;
+//   f = function () {
+//     console.log(b * 2);
+//   };
+// };
+// h();
+// f();
 
 //Example 2
-const boardPassengers = function (n, wait) {
-  const perGroup = n / 3;
+// const boardPassengers = function (n, wait) {
+//   const perGroup = n / 3;
 
-  setTimeout(function () {
-    console.log(`We are now boarding all ${n} passengers`);
-    console.log(`There are 3 groups, each with ${perGroup} passengers`);
-  }, wait * 1000);
+//   setTimeout(function () {
+//     console.log(`We are now boarding all ${n} passengers`);
+//     console.log(`There are 3 groups, each with ${perGroup} passengers`);
+//   }, wait * 1000);
 
-  console.log(`Will start boarding in ${wait} seconds...`);
-};
+//   console.log(`Will start boarding in ${wait} seconds...`);
+// };
 
-boardPassengers(180, 3);
+// boardPassengers(180, 3);
