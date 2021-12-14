@@ -205,15 +205,32 @@ const bookLX = book.bind(swiss);
 // console.log(vat(200));
 
 //IIFE
-(function () {
-  console.log('This function will not run again');
-})(); //immediately invoked
+// (function () {
+//   console.log('This function will not run again');
+// })(); //immediately invoked
 
-//Arrow Function IIFE
-(() => console.log('Arrow function invoked once'))();
-{
-  const isPrivate = 28;
-  var notPrivate = 10;
-}
-// console.log(isPrivate);
-console.log(notPrivate);
+// //Arrow Function IIFE
+// (() => console.log('Arrow function invoked once'))();
+// {
+//   const isPrivate = 28;
+//   var notPrivate = 10;
+// }
+// // console.log(isPrivate);
+// console.log(notPrivate);
+
+//Closures
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passengers`);
+  };
+};
+
+const booker = secureBooking();
+booker();
+booker();
+booker();
+
+console.dir(booker);
