@@ -65,33 +65,46 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // LECTURES
 
+// Map
 const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
   ['GBP', 'Pound sterling'],
 ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
-//For Each Method
-
-//Normal for of statement
-// for (const movement of movements) {
-for (const [i, movement] of movements.entries()) {
-  if (movement > 0) {
-    console.log(`Movement ${i + 1}: You have deposited ${movement}`);
-  } else {
-    console.log(`Movement ${i + 1}: You have withdrawn ${Math.abs(movement)}`);
-  }
-}
-console.log('----FOR EACH-------');
-movements.forEach(function (movement, i, arr) {
-  if (movement > 0) {
-    console.log(`Movement ${i + 1}: You have deposited ${movement}`);
-  } else {
-    console.log(`Movement ${i + 1}: You have withdrawn ${Math.abs(movement)}`);
-  }
+currencies.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`);
 });
+
+// Set
+const currenciesUnique = new Set(['USD', 'GBP', 'USD', 'EUR', 'EUR']);
+console.log(currenciesUnique);
+
+currenciesUnique.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`);
+});
+
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+// //For Each Method
+
+// //Normal for of statement
+// // for (const movement of movements) {
+// for (const [i, movement] of movements.entries()) {
+//   if (movement > 0) {
+//     console.log(`Movement ${i + 1}: You have deposited ${movement}`);
+//   } else {
+//     console.log(`Movement ${i + 1}: You have withdrawn ${Math.abs(movement)}`);
+//   }
+// }
+// console.log('----FOR EACH-------');
+// movements.forEach(function (movement, i, arr) {
+//   if (movement > 0) {
+//     console.log(`Movement ${i + 1}: You have deposited ${movement}`);
+//   } else {
+//     console.log(`Movement ${i + 1}: You have withdrawn ${Math.abs(movement)}`);
+//   }
+// });
 
 /////////////////////////////////////////////////
 // let arr = ['a', 'b', 'c', 'd', 'e'];
