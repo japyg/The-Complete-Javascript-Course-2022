@@ -73,6 +73,26 @@ const currencies = new Map([
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+//For Each Method
+
+//Normal for of statement
+// for (const movement of movements) {
+for (const [i, movement] of movements.entries()) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1}: You have deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1}: You have withdrawn ${Math.abs(movement)}`);
+  }
+}
+console.log('----FOR EACH-------');
+movements.forEach(function (movement, i, arr) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1}: You have deposited ${movement}`);
+  } else {
+    console.log(`Movement ${i + 1}: You have withdrawn ${Math.abs(movement)}`);
+  }
+});
+
 /////////////////////////////////////////////////
 // let arr = ['a', 'b', 'c', 'd', 'e'];
 
