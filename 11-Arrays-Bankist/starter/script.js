@@ -85,6 +85,29 @@ displayMovements(account1.movements);
 /////////////////////////////////////////////////
 // LECTURES
 
+// Map Method
+const data = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const eurToUsd = 1.1;
+
+const dataUSD = data.map(function (mov) {
+  return mov * eurToUsd;
+});
+console.log(data);
+console.log(dataUSD);
+
+//arrow function
+const arrDataUsd = data.map(mov => mov * eurToUsd);
+console.log(arrDataUsd);
+
+const dataDescriptions = data.map(
+  (mov, i) =>
+    `Movement ${i + 1}: You have ${
+      mov > 0 ? 'deposited' : 'withdrawn'
+    } ${Math.abs(mov)}`
+);
+console.log(dataDescriptions);
+
 // // Map
 // const currencies = new Map([
 //   ['USD', 'United States dollar'],
