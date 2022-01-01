@@ -72,7 +72,7 @@ const displayMovements = function (movements) {
         <div class="movements__type movements__type--${type}">${i + 1} ${type}
         </div>
         
-        <div class="movements__value">${mov}</div>
+        <div class="movements__value">₱${mov}</div>
       </div>
     `;
 
@@ -93,9 +93,28 @@ const createUserNames = function (accs) {
 
 const calcDisplayBal = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `₱${balance} `;
 };
 calcDisplayBal(account1.movements);
+
+const calcTotals = function (movements) {
+  const totalDep = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov);
+  labelSumIn.textContent = `₱${totalDep} `;
+  const totalWithdraw = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov);
+  labelSumOut.textContent = `₱${Math.abs(totalWithdraw)} `;
+
+  //1.2% interest for each deposit
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(mov => (mov * 1.2) / 100)
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `₱${interest}`;
+};
+calcTotals(account1.movements);
 
 createUserNames(accounts);
 // console.log(accounts);
@@ -105,11 +124,18 @@ createUserNames(accounts);
 // LECTURES
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+
+// Chaining Methods
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov);
+
+console.log(totalDepositsUSD);
 
 // Map Method
 // const data = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
-// const eurToUsd = 1.1;
 
 // const dataUSD = data.map(function (mov) {
 //   return mov * eurToUsd;
