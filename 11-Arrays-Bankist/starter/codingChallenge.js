@@ -39,3 +39,26 @@
 // };
 
 // checkDogs2();
+
+// Coding Challenge 2
+//Data 1:
+const dogsJulia = [5, 2, 4, 1, 15, 8, 3];
+const dogsKate = [16, 6, 10, 5, 6, 1, 4];
+
+const calcAverageHumanAge = function (ages) {
+  // 1 Human Age
+  const humanAge = ages.map(age => (age <= 2 ? age * 2 : 16 + age * 4));
+  console.log(humanAge);
+
+  // 2 Adult Dogs
+
+  const adultDogs = humanAge.filter(age => age >= 18);
+  console.log(adultDogs);
+
+  // 3 Average Age
+  const average = adultDogs.reduce((acc, age) => acc + age, 0);
+  console.log(average / adultDogs.length);
+};
+
+calcAverageHumanAge(dogsJulia);
+calcAverageHumanAge(dogsKate);

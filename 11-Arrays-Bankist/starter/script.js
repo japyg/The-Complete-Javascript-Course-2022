@@ -161,15 +161,15 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(balanceArr);
 
 // Getting the maximum value
-console.log(movements);
-const max = movements.reduce(function (acc, mov) {
-  if (acc > mov) {
-    return acc;
-  } else {
-    return mov;
-  }
-}, movements[0]);
-console.log(max);
+// console.log(movements);
+// const max = movements.reduce(function (acc, mov) {
+//   if (acc > mov) {
+//     return acc;
+//   } else {
+//     return mov;
+//   }
+// }, movements[0]);
+// console.log(max);
 
 //Filter Method
 // const deposits = movements.filter(function (mov) {
