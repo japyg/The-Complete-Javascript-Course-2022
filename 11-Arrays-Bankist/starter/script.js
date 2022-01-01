@@ -81,32 +81,45 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const createUserNames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join('');
+  });
+};
+
+createUserNames(accounts);
+console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
 // Map Method
-const data = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const data = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const eurToUsd = 1.1;
+// const eurToUsd = 1.1;
 
-const dataUSD = data.map(function (mov) {
-  return mov * eurToUsd;
-});
-console.log(data);
-console.log(dataUSD);
+// const dataUSD = data.map(function (mov) {
+//   return mov * eurToUsd;
+// });
+// console.log(data);
+// console.log(dataUSD);
 
-//arrow function
-const arrDataUsd = data.map(mov => mov * eurToUsd);
-console.log(arrDataUsd);
+// //arrow function
+// const arrDataUsd = data.map(mov => mov * eurToUsd);
+// console.log(arrDataUsd);
 
-const dataDescriptions = data.map(
-  (mov, i) =>
-    `Movement ${i + 1}: You have ${
-      mov > 0 ? 'deposited' : 'withdrawn'
-    } ${Math.abs(mov)}`
-);
-console.log(dataDescriptions);
+// const dataDescriptions = data.map(
+//   (mov, i) =>
+//     `Movement ${i + 1}: You have ${
+//       mov > 0 ? 'deposited' : 'withdrawn'
+//     } ${Math.abs(mov)}`
+// );
+// console.log(dataDescriptions);
 
 // // Map
 // const currencies = new Map([
