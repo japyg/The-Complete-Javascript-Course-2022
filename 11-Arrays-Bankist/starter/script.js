@@ -79,7 +79,6 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-displayMovements(account1.movements);
 
 const createUserNames = function (accs) {
   accs.forEach(function (acc) {
@@ -95,29 +94,66 @@ const calcDisplayBal = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `₱${balance} `;
 };
-calcDisplayBal(account1.movements);
 
-const calcTotals = function (movements) {
-  const totalDep = movements
+const calcTotals = function (acc) {
+  const totalDep = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov);
   labelSumIn.textContent = `₱${totalDep} `;
-  const totalWithdraw = movements
+  const totalWithdraw = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov);
   labelSumOut.textContent = `₱${Math.abs(totalWithdraw)} `;
 
-  //1.2% interest for each deposit
-  const interest = movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(mov => (mov * 1.2) / 100)
+    .map(mov => (mov * acc.interestRate) / 100)
     .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `₱${interest}`;
 };
-calcTotals(account1.movements);
 
 createUserNames(accounts);
 // console.log(accounts);
+
+// Event Handlers
+
+let currentAccount;
+
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+  // console.log(currentAccount);
+
+  //used optional chaining
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    console.log('LOGGED IN!');
+
+    //Clear input fields
+    inputLoginUsername.value = '';
+    inputLoginPin.value = '';
+    inputLoginPin.blur();
+
+    //Display UI and message
+    labelWelcome.textContent = `Welcome, ${
+      currentAccount.owner.split(' ')[0]
+    }!`;
+    containerApp.style.opacity = 100;
+
+    //Display Movements
+    displayMovements(currentAccount.movements);
+
+    //Display Balance
+    calcDisplayBal(currentAccount.movements);
+
+    //Display Summary
+    calcTotals(currentAccount);
+  } else {
+    console.log('User or PIN is incorrect');
+  }
+});
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -132,13 +168,13 @@ const eurToUsd = 1.1;
 // console.log(movements);
 // console.log(firstWithdrawal);
 
-console.log(accounts);
-const account = accounts.find(acc => acc.owner === 'Sarah Smith');
-// console.log(account);
+// console.log(accounts);
+// const account = accounts.find(acc => acc.owner === 'Sarah Smith');
+// // console.log(account);
 
-//using the regular for loop
-for (const acc of accounts)
-  if (acc.owner === 'Jonas Schmedtmann') console.log(acc);
+// //using the regular for loop
+// for (const acc of accounts)
+//   if (acc.owner === 'Jonas Schmedtmann') console.log(acc);
 
 // Chaining Methods
 // const totalDepositsUSD = movements
