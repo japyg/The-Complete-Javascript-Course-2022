@@ -141,7 +141,7 @@ btnLogin.addEventListener('click', function (e) {
 
   //used optional chaining
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
-    console.log('LOGGED IN!');
+    // console.log('LOGGED IN!');
 
     //Clear input fields
     inputLoginUsername.value = '';
@@ -213,12 +213,43 @@ btnClose.addEventListener('click', function (e) {
   inputClosePin.blur();
 });
 
+//Loan Amount
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  console.log(currentAccount.movements);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov > amount * 0.1)) {
+    currentAccount.movements.push(amount);
+
+    //Update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
+
+// Every Method
+// console.log(movements.every(mov => mov > 0));
+// console.log(account4.movements.every(mov => mov > 0));
+
+//Separate Callbacks
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
+
+// Some Method
+// const anyDeposits = movements.some(mov => mov > 500);
+// console.log(anyDeposits);
 
 // Find Method
 
