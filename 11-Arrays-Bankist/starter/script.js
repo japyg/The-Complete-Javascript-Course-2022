@@ -89,10 +89,12 @@ const createUserNames = function (accs) {
       .join('');
   });
 };
+createUserNames(accounts);
 
-const calcDisplayBal = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `₱${balance} `;
+const calcDisplayBal = function (acc) {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+
+  labelBalance.textContent = `₱${acc.balance} `;
 };
 
 const calcTotals = function (acc) {
@@ -102,7 +104,7 @@ const calcTotals = function (acc) {
   labelSumIn.textContent = `₱${totalDep} `;
   const totalWithdraw = acc.movements
     .filter(mov => mov < 0)
-    .reduce((acc, mov) => acc + mov);
+    .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `₱${Math.abs(totalWithdraw)} `;
 
   const interest = acc.movements
@@ -112,8 +114,18 @@ const calcTotals = function (acc) {
   labelSumInterest.textContent = `₱${interest}`;
 };
 
-createUserNames(accounts);
 // console.log(accounts);
+
+const updateUI = function (acc) {
+  //Display Movements
+  displayMovements(acc.movements);
+
+  //Display Balance
+  calcDisplayBal(currentAccount);
+
+  //Display Summary
+  calcTotals(currentAccount);
+};
 
 // Event Handlers
 
@@ -142,16 +154,40 @@ btnLogin.addEventListener('click', function (e) {
     }!`;
     containerApp.style.opacity = 100;
 
-    //Display Movements
-    displayMovements(currentAccount.movements);
-
-    //Display Balance
-    calcDisplayBal(currentAccount.movements);
-
-    //Display Summary
-    calcTotals(currentAccount);
+    updateUI(currentAccount);
   } else {
     console.log('User or PIN is incorrect');
+  }
+});
+
+//Transfer Money
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputTransferAmount.value);
+
+  const receiverAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+  console.log(amount, receiverAcc, currentAccount);
+
+  //Clear input fields
+  inputTransferTo.value = '';
+  inputTransferAmount.value = '';
+  inputTransferAmount.blur();
+
+  if (
+    amount > 0 &&
+    currentAccount.balance >= amount &&
+    receiverAcc &&
+    receiverAcc?.username !== currentAccount.username
+  ) {
+    //Doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+
+    //Update UI
+    updateUI(currentAccount);
   }
 });
 
