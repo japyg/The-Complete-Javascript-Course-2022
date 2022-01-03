@@ -480,3 +480,31 @@ const eurToUsd = 1.1;
 // console.log(arr3[arr3.length - 1]);
 // console.log(arr3.slice(-1)[0]);
 // console.log(arr3.at(-1)); //at method ES6
+
+//Creating New Array
+const arr = [1, 2, 3, 4, 5, 6, 7];
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+//Filling an empty array
+const x = new Array(7);
+console.log(x);
+
+// x.fill(1);
+x.fill(1, 3);
+console.log(x);
+arr.fill(10, 2, 5);
+console.log(arr);
+
+//Array.from
+const arr2 = Array.from({ length: 7 }, () => 2);
+console.log(arr2);
+
+const arr3 = Array.from({ length: 7 }, (cur, i) => i + 1);
+console.log(arr3);
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value')
+  );
+  console.log(movementsUI.map(mov => Number(mov.textContent.replace('₱', ''))));
+});
