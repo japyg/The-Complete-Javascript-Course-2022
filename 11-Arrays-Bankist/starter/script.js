@@ -513,53 +513,53 @@ const eurToUsd = 1.1;
 
 //Reduce method
 
-const bankDeposits = accounts
-  .flatMap(acc => acc.movements)
-  .filter(mov => mov > 1)
-  .reduce((sum, num) => sum + num, 0);
-console.log(bankDeposits);
+// const bankDeposits = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov > 1)
+//   .reduce((sum, num) => sum + num, 0);
+// console.log(bankDeposits);
 
-//simple way
-const numDeposits = accounts
-  .flatMap(acc => acc.movements)
-  .filter(mov => mov >= 1000).length;
-console.log(numDeposits);
+// //simple way
+// const numDeposits = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov >= 1000).length;
+// console.log(numDeposits);
 
-//reduce method way
-const numDeposits2 = accounts
-  .flatMap(acc => acc.movements)
-  .reduce((count, num) => (num >= 1000 ? ++count : count), 0);
-console.log(numDeposits2);
+// //reduce method way
+// const numDeposits2 = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce((count, num) => (num >= 1000 ? ++count : count), 0);
+// console.log(numDeposits2);
 
-//using object
-const { deposits, withdrawals } = accounts
-  .flatMap(acc => acc.movements)
-  .reduce(
-    (sum, num) => {
-      // num > 0 ? (sum.deposits += num) : (sum.withdrawals += num);
-      sum[num > 0 ? 'deposits' : 'withdrawals'] += num;
-      return sum;
-    },
-    { deposits: 0, withdrawals: 0 }
-  );
+// //using object
+// const { deposits, withdrawals } = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce(
+//     (sum, num) => {
+//       // num > 0 ? (sum.deposits += num) : (sum.withdrawals += num);
+//       sum[num > 0 ? 'deposits' : 'withdrawals'] += num;
+//       return sum;
+//     },
+//     { deposits: 0, withdrawals: 0 }
+//   );
 
-console.log(deposits, withdrawals);
+// console.log(deposits, withdrawals);
 
-const convertTitleCase = function (title) {
-  const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'with'];
+// const convertTitleCase = function (title) {
+//   const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'with'];
 
-  const capitalize = str => str[0].toUpperCase() + str.slice(1);
+//   const capitalize = str => str[0].toUpperCase() + str.slice(1);
 
-  const titleCase = title
-    .toLowerCase()
-    .split(' ')
-    .map(word =>
-      exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)
-    )
-    .join(' ');
-  return capitalize(titleCase);
-};
+//   const titleCase = title
+//     .toLowerCase()
+//     .split(' ')
+//     .map(word =>
+//       exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)
+//     )
+//     .join(' ');
+//   return capitalize(titleCase);
+// };
 
-console.log(convertTitleCase('this is a nice title'));
-console.log(convertTitleCase('this is a LONG BUT not too long'));
-console.log(convertTitleCase('and this is a shOrt title WITH big O'));
+// console.log(convertTitleCase('this is a nice title'));
+// console.log(convertTitleCase('this is a LONG BUT not too long'));
+// console.log(convertTitleCase('and this is a shOrt title WITH big O'));
