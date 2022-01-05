@@ -482,29 +482,84 @@ const eurToUsd = 1.1;
 // console.log(arr3.at(-1)); //at method ES6
 
 //Creating New Array
-const arr = [1, 2, 3, 4, 5, 6, 7];
-console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+// const arr = [1, 2, 3, 4, 5, 6, 7];
+// console.log(new Array(1, 2, 3, 4, 5, 6, 7));
 
 //Filling an empty array
-const x = new Array(7);
-console.log(x);
+// const x = new Array(7);
+// console.log(x);
 
-// x.fill(1);
-x.fill(1, 3);
-console.log(x);
-arr.fill(10, 2, 5);
-console.log(arr);
+// // x.fill(1);
+// x.fill(1, 3);
+// console.log(x);
+// arr.fill(10, 2, 5);
+// console.log(arr);
 
 //Array.from
-const arr2 = Array.from({ length: 7 }, () => 2);
-console.log(arr2);
+// const arr2 = Array.from({ length: 7 }, () => 2);
+// console.log(arr2);
 
-const arr3 = Array.from({ length: 7 }, (cur, i) => i + 1);
-console.log(arr3);
+// const arr3 = Array.from({ length: 7 }, (cur, i) => i + 1);
+// console.log(arr3);
 
-labelBalance.addEventListener('click', function () {
-  const movementsUI = Array.from(
-    document.querySelectorAll('.movements__value')
+// labelBalance.addEventListener('click', function () {
+//   const movementsUI = Array.from(
+//     document.querySelectorAll('.movements__value')
+//   );
+//   console.log(movementsUI.map(mov => Number(mov.textContent.replace('₱', ''))));
+// });
+
+//More Exercises
+
+//Reduce method
+
+const bankDeposits = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov > 1)
+  .reduce((sum, num) => sum + num, 0);
+console.log(bankDeposits);
+
+//simple way
+const numDeposits = accounts
+  .flatMap(acc => acc.movements)
+  .filter(mov => mov >= 1000).length;
+console.log(numDeposits);
+
+//reduce method way
+const numDeposits2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((count, num) => (num >= 1000 ? ++count : count), 0);
+console.log(numDeposits2);
+
+//using object
+const { deposits, withdrawals } = accounts
+  .flatMap(acc => acc.movements)
+  .reduce(
+    (sum, num) => {
+      // num > 0 ? (sum.deposits += num) : (sum.withdrawals += num);
+      sum[num > 0 ? 'deposits' : 'withdrawals'] += num;
+      return sum;
+    },
+    { deposits: 0, withdrawals: 0 }
   );
-  console.log(movementsUI.map(mov => Number(mov.textContent.replace('₱', ''))));
-});
+
+console.log(deposits, withdrawals);
+
+const convertTitleCase = function (title) {
+  const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'with'];
+
+  const capitalize = str => str[0].toUpperCase() + str.slice(1);
+
+  const titleCase = title
+    .toLowerCase()
+    .split(' ')
+    .map(word =>
+      exceptions.includes(word) ? word : word[0].toUpperCase() + word.slice(1)
+    )
+    .join(' ');
+  return capitalize(titleCase);
+};
+
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG BUT not too long'));
+console.log(convertTitleCase('and this is a shOrt title WITH big O'));
