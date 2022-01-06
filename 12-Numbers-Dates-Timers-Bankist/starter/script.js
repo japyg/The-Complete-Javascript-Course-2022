@@ -251,3 +251,28 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
+
+//Conversion
+console.log(Number('23'));
+
+//Parsing
+console.log(Number.parseInt('10px'));
+console.log(Number.parseFloat('2.5rem'));
+
+//Check if value is not a number
+console.log(Number.isNaN(20));
+console.log(Number.isNaN('20'));
+console.log(Number.isNaN(+'20rem'));
+
+//Checking if a value is a number
+console.log(Number.isFinite(23));
+console.log(Number.isFinite('23'));
+
+const reverse = function (n) {
+  const rev = n.split('').reverse().join('');
+
+  return rev;
+};
+
+console.log(reverse('world'));
+console.log(reverse('hello'));
