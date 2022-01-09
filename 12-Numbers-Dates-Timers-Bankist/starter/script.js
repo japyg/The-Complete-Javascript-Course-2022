@@ -327,15 +327,29 @@ btnSort.addEventListener('click', function (e) {
 // console.log(+(4.723).toFixed(2));
 
 //Remainder Operator
-console.log(5 % 2);
-console.log(8 % 3);
+// console.log(5 % 2);
+// console.log(8 % 3);
 
-const isEven = n => n % 2 === 0;
-console.log(isEven(108));
+// const isEven = n => n % 2 === 0;
+// console.log(isEven(108));
 
-labelBalance.addEventListener('click', function () {
-  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
-    if (i % 2 === 0) row.style.backgroundColor = 'lightgreen';
-    if (i % 2 !== 0) row.style.backgroundColor = 'lightyellow';
-  });
-});
+// labelBalance.addEventListener('click', function () {
+//   [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+//     if (i % 2 === 0) row.style.backgroundColor = 'lightgreen';
+//     if (i % 2 !== 0) row.style.backgroundColor = 'lightyellow';
+//   });
+// });
+
+//BigInt (ES6)
+console.log(Number.MAX_SAFE_INTEGER);
+
+console.log(BigInt(2321319273198271238));
+
+const huge = 1238283012803n;
+const num = 23;
+// console.log(huge * num);
+
+//Exceptions
+console.log(10n > 1);
+console.log(10n === 10);
+console.log(10n == 10);
