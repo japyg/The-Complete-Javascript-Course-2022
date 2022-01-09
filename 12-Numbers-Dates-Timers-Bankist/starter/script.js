@@ -341,15 +341,38 @@ btnSort.addEventListener('click', function (e) {
 // });
 
 //BigInt (ES6)
-console.log(Number.MAX_SAFE_INTEGER);
+// console.log(Number.MAX_SAFE_INTEGER);
 
-console.log(BigInt(2321319273198271238));
+// console.log(BigInt(2321319273198271238));
 
-const huge = 1238283012803n;
-const num = 23;
-// console.log(huge * num);
+// const huge = 1238283012803n;
+// const num = 23;
+// // console.log(huge * num);
 
-//Exceptions
-console.log(10n > 1);
-console.log(10n === 10);
-console.log(10n == 10);
+// //Exceptions
+// console.log(10n > 1);
+// console.log(10n === 10);
+// console.log(10n == 10);
+
+//Create a date
+const dateNow = new Date();
+console.log(dateNow);
+
+console.log(new Date(account1.movementsDates[0]));
+
+const future = new Date(2037, 10, 18, 15, 23);
+console.log(future.getFullYear());
+console.log(future.getMonth());
+console.log(future.getDate());
+console.log(future.getDay());
+console.log(future.getHours());
+console.log(future.getMinutes());
+console.log(future.getSeconds());
+console.log(future.toISOString());
+console.log(future.getTime());
+
+console.log(new Date(2142141780000)); //timestamp
+console.log(Date.now());
+
+future.setFullYear(2040);
+console.log(future);
