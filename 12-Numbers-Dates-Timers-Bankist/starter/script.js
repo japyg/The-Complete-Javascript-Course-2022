@@ -291,37 +291,51 @@ btnSort.addEventListener('click', function (e) {
 // console.log(square(3212));
 
 //Math and Rounding
-console.log(Math.sqrt(25));
-console.log(Math.sqrt(81));
-console.log(25 ** (1 / 2));
+// console.log(Math.sqrt(25));
+// console.log(Math.sqrt(81));
+// console.log(25 ** (1 / 2));
 
-console.log(Math.max(1, 46, 23, 54));
-console.log(Math.max(1, 46, 23, '54'));
-console.log(Math.max(1, 46, 23, '54px'));
-console.log(Math.min(1, 46, 23, 54));
+// console.log(Math.max(1, 46, 23, 54));
+// console.log(Math.max(1, 46, 23, '54'));
+// console.log(Math.max(1, 46, 23, '54px'));
+// console.log(Math.min(1, 46, 23, 54));
 
-//Random Numbers
-console.log(Math.trunc(Math.random() * 10 + 1));
+// //Random Numbers
+// console.log(Math.trunc(Math.random() * 10 + 1));
 
-const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
-//0...1 -> 0..(max-min) -> min...max
+// const randomInt = (min, max) => Math.floor(Math.random() * (max - min) + min);
+// //0...1 -> 0..(max-min) -> min...max
 
-console.log(randomInt(9, 10));
+// console.log(randomInt(9, 10));
 
-//Rounding integers
-console.log(Math.trunc(10.5));
-console.log(Math.round(10.5));
+// //Rounding integers
+// console.log(Math.trunc(10.5));
+// console.log(Math.round(10.5));
 
-console.log(Math.ceil(10.5));
-console.log(Math.ceil(10.1));
+// console.log(Math.ceil(10.5));
+// console.log(Math.ceil(10.1));
 
-console.log(Math.floor(10.1));
-console.log(Math.floor(10.9));
+// console.log(Math.floor(10.1));
+// console.log(Math.floor(10.9));
 
-console.log(Math.trunc(-10.1));
-console.log(Math.floor(-10.9));
+// console.log(Math.trunc(-10.1));
+// console.log(Math.floor(-10.9));
 
-//Rounding decimals
-console.log((4.7).toFixed(0));
-console.log((4.7).toFixed(3));
-console.log(+(4.723).toFixed(2));
+// //Rounding decimals
+// console.log((4.7).toFixed(0));
+// console.log((4.7).toFixed(3));
+// console.log(+(4.723).toFixed(2));
+
+//Remainder Operator
+console.log(5 % 2);
+console.log(8 % 3);
+
+const isEven = n => n % 2 === 0;
+console.log(isEven(108));
+
+labelBalance.addEventListener('click', function () {
+  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+    if (i % 2 === 0) row.style.backgroundColor = 'lightgreen';
+    if (i % 2 !== 0) row.style.backgroundColor = 'lightyellow';
+  });
+});
