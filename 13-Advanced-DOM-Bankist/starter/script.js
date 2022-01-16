@@ -65,3 +65,33 @@ document
   .addEventListener('click', function () {
     message.remove();
   });
+
+//Styles
+message.style.backgroundColor = '#37383d';
+message.style.width = '120%';
+
+console.log(getComputedStyle(message));
+console.log(getComputedStyle(message).backgroundColor);
+console.log(getComputedStyle(message).height);
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+//changing the root colors
+document.documentElement.style.setProperty('--color-primary', 'orange');
+
+//Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+logo.alt = 'Beatiful Minimalist Logo';
+console.log(logo.src);
+
+//Non-standard
+console.log(logo.designer);
+console.log(logo.getAttribute('designer'));
+logo.setAttribute('company', 'Bankist');
+
+//Classlist
+logo.classList.add('c');
+logo.classList.remove('c');
+logo.classList.toggle('c');
+logo.classList.contains('c');
