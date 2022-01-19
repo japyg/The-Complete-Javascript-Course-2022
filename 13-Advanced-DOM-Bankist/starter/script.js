@@ -30,6 +30,36 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+////////////////////////
+//Page Navigation
+
+// //simple solution but not optimized
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+
+//     const id = this.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+//optimized solution -- Event delegation
+
+//1. Add event listener to common parent element
+//2. Determine what element originated the event
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  console.log(e.target);
+  e.preventDefault();
+
+  //Matching strategy
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
+});
+
+////////////////////////
 //Selecting Elements
 // console.log(document.documentElement);
 // console.log(document.head);
@@ -145,26 +175,26 @@ btnScrollTo.addEventListener('click', function (e) {
 //Event Propagation
 
 //rgb(255, 255, 255)
-const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
 
-const randomColor = () =>
-  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
 
-document.querySelector('.nav__link').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  console.log('Link', e.target, e.currentTarget);
+// document.querySelector('.nav__link').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+//   console.log('Link', e.target, e.currentTarget);
 
-  //stopping event propagation
-  // e.stopPropagation();
-});
+//   //stopping event propagation
+//   // e.stopPropagation();
+// });
 
-document.querySelector('.nav__links').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  console.log('Links', e.target, e.currentTarget);
-});
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+//   console.log('Links', e.target, e.currentTarget);
+// });
 
-document.querySelector('.nav').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  console.log('Nav', e.target, e.currentTarget);
-});
+// document.querySelector('.nav').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomColor();
+//   console.log('Nav', e.target, e.currentTarget);
+// });
