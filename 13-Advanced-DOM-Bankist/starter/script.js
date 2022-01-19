@@ -130,3 +130,14 @@ btnScrollTo.addEventListener('click', function (e) {
   //modern way of smooth scrolling
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+//Types of Events
+const h1 = document.querySelector('h1');
+
+const alertH1 = function (e) {
+  alert('Event Listener 1!');
+  h1.removeEventListener('mouseenter', alertH1);
+};
+h1.addEventListener('mouseenter', alertH1);
+
+// h1.onmouseenter = alertH1;
