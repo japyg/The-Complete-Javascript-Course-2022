@@ -8,6 +8,9 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove('hidden');
@@ -105,6 +108,46 @@ const handleHover = function (e) {
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
+//Sticky Navigation -- scroll method
+// const initialCoords = section1.getBoundingClientRect();
+
+// window.addEventListener('scroll', function () {
+//   if (window.scrollY > initialCoords.top) nav.classList.add('sticky');
+//   else nav.classList.remove('sticky');
+// });
+
+//Sticky Navigation: Intersection Observer API
+// const obsCallback = function (entries, observer) {
+//   entries.forEach(entry => console.log(entry));
+// };
+
+// const obsOptions = {
+//   root: null,
+//   threshold: [0, 0.15],
+// };
+
+// const observer = new IntersectionObserver(obsCallback, obsOptions);
+// observer.observe(section1);
+
+const header = document.querySelector('.header');
+const navHeight = nav.getBoundingClientRect().height;
+console.log(navHeight);
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  console.log(entry);
+
+  if (entry.isIntersecting === false) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null,
+  threshold: 0,
+  rootMargin: `-${navHeight}px`,
+});
+headerObserver.observe(header);
+
 ////////////////////////
 //Selecting Elements
 // console.log(document.documentElement);
@@ -173,8 +216,6 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 // logo.classList.contains('c');
 
 //Smooth Scrolling
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
 
 btnScrollTo.addEventListener('click', function (e) {
   const s1coords = section1.getBoundingClientRect();
