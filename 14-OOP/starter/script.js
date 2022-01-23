@@ -59,8 +59,8 @@
 //Class Declaration
 class PersonCL {
   //properties
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
     this.birthYear = birthYear;
   }
   //methods
@@ -68,16 +68,45 @@ class PersonCL {
     console.log(2022 - this.birthYear);
   }
   greet() {
-    console.log(`Hey, ${this.firstName}!`);
+    console.log(`Hey, ${this.fullName}!`);
+  }
+  get age() {
+    return 2022 - this.birthYear;
+  }
+
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
   }
 }
 
-const jap = new PersonCL('Jap', 1992);
+const jap = new PersonCL('Jap DG', 1992);
 console.log(jap);
-jap.calcAge();
-console.log(jap.__proto__ === PersonCL.prototype);
+// jap.calcAge();
+// console.log(jap.__proto__ === PersonCL.prototype);
 
-// PersonCL.prototype.greet = function () {
-//   console.log(`Hey, ${this.firstName}!`);
-// };
-jap.greet();
+// // PersonCL.prototype.greet = function () {
+// //   console.log(`Hey, ${this.firstName}!`);
+// // };
+// jap.greet();
+
+//Setters and Getters
+const user = {
+  owner: 'Jap',
+  movement: [150, 500, 200, 600],
+
+  get latest() {
+    return this.movement.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movement.push(mov);
+  },
+};
+console.log(user.latest);
+user.latest = 50;
+console.log(user.movement);
