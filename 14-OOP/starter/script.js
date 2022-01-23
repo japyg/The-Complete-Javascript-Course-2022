@@ -19,3 +19,18 @@ const chikads = new Person('Chikads', 2013);
 console.log(chikads);
 
 console.log(jap instanceof Person);
+
+//Prototypes
+Person.prototype.calcAge = function () {
+  console.log(2022 - this.birthYear);
+};
+jap.calcAge();
+chikads.calcAge();
+console.log(jap.__proto__ === Person.prototype);
+console.log(Person.prototype.isPrototypeOf(jap));
+console.log(Person.prototype.isPrototypeOf(Person));
+
+Person.prototype.species = 'Homo Sapiens';
+console.log(jap);
+console.log(jap.hasOwnProperty('firstName'));
+console.log(jap.hasOwnProperty('species'));
