@@ -50,3 +50,34 @@
 //   return [...new Set(this)];
 // };
 // console.log(arr.unique());
+
+//ES6 Clasess
+
+//Class Expression
+// const PersonCL = class {}
+
+//Class Declaration
+class PersonCL {
+  //properties
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+  //methods
+  calcAge() {
+    console.log(2022 - this.birthYear);
+  }
+  greet() {
+    console.log(`Hey, ${this.firstName}!`);
+  }
+}
+
+const jap = new PersonCL('Jap', 1992);
+console.log(jap);
+jap.calcAge();
+console.log(jap.__proto__ === PersonCL.prototype);
+
+// PersonCL.prototype.greet = function () {
+//   console.log(`Hey, ${this.firstName}!`);
+// };
+jap.greet();
