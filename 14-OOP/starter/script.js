@@ -112,26 +112,26 @@
 // console.log(user.movement);
 
 // Object.create
-const PersonProto = {
-  calcAge() {
-    console.log(2022 - this.birthYear);
-  },
-  init(firstName, birthYear) {
-    this.firstName = firstName;
-    this.birthYear = birthYear;
-  },
-};
+// const PersonProto = {
+//   calcAge() {
+//     console.log(2022 - this.birthYear);
+//   },
+//   init(firstName, birthYear) {
+//     this.firstName = firstName;
+//     this.birthYear = birthYear;
+//   },
+// };
 
-const jaesuk = Object.create(PersonProto);
-console.log(jaesuk);
+// const jaesuk = Object.create(PersonProto);
+// console.log(jaesuk);
 
-jaesuk.name = 'Jaesuk';
-jaesuk.birthYear = '1969';
-jaesuk.calcAge();
-console.log(jaesuk);
+// jaesuk.name = 'Jaesuk';
+// jaesuk.birthYear = '1969';
+// jaesuk.calcAge();
+// console.log(jaesuk);
 
-const jihyo = Object.create(PersonProto);
-jihyo.init('Jihyo', 1982);
-console.log(jihyo);
-jihyo.calcAge();
-console.log(jihyo.__proto__);
+// const jihyo = Object.create(PersonProto);
+// jihyo.init('Jihyo', 1982);
+// console.log(jihyo);
+// jihyo.calcAge();
+// console.log(jihyo.__proto__);
