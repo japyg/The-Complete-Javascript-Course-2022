@@ -64,3 +64,49 @@
 // console.log(ford.speedUS);
 // ford.speedUS = 50;
 // console.log(ford);
+
+//Coding Challenge 3
+
+//1
+const Car = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+
+Car.prototype.accelerate = function () {
+  console.log((this.speed += 10));
+};
+
+Car.prototype.brake = function () {
+  console.log((this.speed -= 5));
+};
+
+const EV = function (make, speed, charge) {
+  Car.call(this, make, speed);
+  this.charge = charge;
+};
+
+//link prototypes between parent and child
+EV.prototype = Object.create(Car.prototype);
+
+//2
+EV.prototype.chargeBattery = function (chargeTo) {
+  this.charge = chargeTo;
+  console.log(`${this.make} is charged at ${chargeTo}%`);
+};
+
+//3
+EV.prototype.accelerate = function () {
+  this.speed += 20;
+  this.charge -= 1;
+  console.log(
+    `${this.make} going at ${this.speed} km/h, with a charge of ${this.charge}%`
+  );
+};
+
+const tesla = new EV('Tesla', 120, 23);
+console.log(tesla);
+tesla.accelerate();
+tesla.brake();
+tesla.chargeBattery(90);
+tesla.accelerate();
