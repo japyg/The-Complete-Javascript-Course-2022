@@ -135,3 +135,40 @@
 // console.log(jihyo);
 // jihyo.calcAge();
 // console.log(jihyo.__proto__);
+
+//Inheritance between classes
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+Person.prototype.calcAge = function () {
+  console.log(2022 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  Person.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+//linking prototypes
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I am a ${this.course}`);
+};
+
+const sechan = new Student('Sechan', 1986, 'Comedian');
+console.log(sechan);
+sechan.introduce();
+sechan.calcAge();
+
+console.log(sechan.__proto__);
+console.dir(sechan.__proto__.__proto__);
+
+//all true because linked by Object.create
+console.log(sechan instanceof Student);
+console.log(sechan instanceof Person);
+console.log(sechan instanceof Object);
+
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor);
