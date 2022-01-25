@@ -222,36 +222,44 @@ Person.prototype.calcAge = function () {
 //Another Class Example
 
 class Account {
+  //public fields (instances)
+  locale = navigator.language;
+
+  //private fields
+  #movements = [];
+  #pin;
+
   constructor(owner, currency, pin) {
     this.owner = owner;
     this.currency = currency;
 
     //protected property
-    this._pin = pin;
-    this._movements = [];
-    this.locale = navigator.language;
+    this.#pin = pin;
+    // this._movements = [];
+    // this.locale = navigator.language;
 
     console.log(`Thanks for opening an account, ${owner}!`);
   }
 
-  //Public Interface
+  //Public Interface / Public methods
   deposit(val) {
-    this._movements.push(val);
+    this.#movements.push(val);
   }
 
   withdraw(val) {
     this.deposit(-val);
   }
 
-  _approveLoan(val) {
-    return true;
-  }
-
   requestLoan(val) {
-    if (this._approveLoan(val)) {
+    if (this.#approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan approved!`);
     }
+  }
+
+  //Private methods
+  #approveLoan(val) {
+    return true;
   }
 }
 const acc1 = new Account('Sukjin', 'USD', 1111);
@@ -260,3 +268,7 @@ acc1.withdraw(20);
 
 acc1.requestLoan(300);
 console.log(acc1);
+
+// console.log(acc1.#movements); //syntax error
+// console.log(acc1.#pin);
+// console.log(acc1.#approveLoan(100));
