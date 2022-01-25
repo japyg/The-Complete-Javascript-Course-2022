@@ -137,13 +137,13 @@
 // console.log(jihyo.__proto__);
 
 //Inheritance between classes
-// const Person = function (firstName, birthYear) {
-//   this.firstName = firstName;
-//   this.birthYear = birthYear;
-// };
-// Person.prototype.calcAge = function () {
-//   console.log(2022 - this.birthYear);
-// };
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+Person.prototype.calcAge = function () {
+  console.log(2022 - this.birthYear);
+};
 
 // const Student = function (firstName, birthYear, course) {
 //   Person.call(this, firstName, birthYear);
@@ -172,3 +172,21 @@
 
 // Student.prototype.constructor = Student;
 // console.dir(Student.prototype.constructor);
+
+//Inheritance in ES6 Classes
+
+class StudentCL extends Person {
+  constructor(fullName, birthYear, course) {
+    //Always needs to happen first
+    super(fullName, birthYear);
+    this.course = course;
+  }
+  introduce() {
+    console.log(
+      `My name is ${this.firstName} and I am a ${this.course} student`
+    );
+  }
+}
+const jap = new StudentCL('Jap', 1992, 'Computer Science');
+console.log(jap);
+jap.introduce();
