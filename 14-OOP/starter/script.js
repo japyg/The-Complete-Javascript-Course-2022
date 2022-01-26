@@ -244,10 +244,12 @@ class Account {
   //Public Interface / Public methods
   deposit(val) {
     this.#movements.push(val);
+    return this;
   }
 
   withdraw(val) {
     this.deposit(-val);
+    return this;
   }
 
   requestLoan(val) {
@@ -255,6 +257,7 @@ class Account {
       this.deposit(val);
       console.log(`Loan approved!`);
     }
+    return this;
   }
 
   //Private methods
@@ -272,3 +275,6 @@ console.log(acc1);
 // console.log(acc1.#movements); //syntax error
 // console.log(acc1.#pin);
 // console.log(acc1.#approveLoan(100));
+
+//Chaining
+acc1.deposit(200).deposit(500).withdraw(300).requestLoan(1000).withdraw(50);
