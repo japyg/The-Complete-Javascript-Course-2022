@@ -56,7 +56,7 @@ const renderCountry = function (data, className = '') {
   </article>
   `;
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  // countriesContainer.style.opacity = 1;
+  countriesContainer.style.opacity = 1;
 };
 
 // const getCountryAndNeighbour = function (country) {
@@ -92,21 +92,21 @@ const renderCountry = function (data, className = '') {
 // getCountryAndNeighbour('france');
 
 //Modern way of making AJAX calls
-const request = fetch('https://restcountries.com/v2/name/portugal');
-// console.log(request);
+// const request = fetch('https://restcountries.com/v2/name/portugal');
+// // console.log(request);
 
-const renderError = function (msg) {
-  countriesContainer.insertAdjacentText('beforeend', msg);
-  // countriesContainer.style.opacity = 1;
-};
+// const renderError = function (msg) {
+//   countriesContainer.insertAdjacentText('beforeend', msg);
+//   // countriesContainer.style.opacity = 1;
+// };
 
-const getJSON = function (url, errorMessage = 'Something went wrong') {
-  return fetch(url).then(response => {
-    if (!response.ok) throw new Error(`${errorMessage} (${response.status})`);
+// const getJSON = function (url, errorMessage = 'Something went wrong') {
+//   return fetch(url).then(response => {
+//     if (!response.ok) throw new Error(`${errorMessage} (${response.status})`);
 
-    return response.json();
-  });
-};
+//     return response.json();
+//   });
+// };
 
 //First sample
 // const getCountryData = function (country) {
@@ -142,31 +142,58 @@ const getJSON = function (url, errorMessage = 'Something went wrong') {
 // };
 
 //Second sample using the getJSON function
-const getCountryData = function (country) {
-  //Country 1
-  getJSON(`https://restcountries.com/v2/name/${country}`, 'Country not found ')
+// const getCountryData = function (country) {
+//   //Country 1
+//   getJSON(`https://restcountries.com/v2/name/${country}`, 'Country not found ')
+//     .then(data => {
+//       renderCountry(data[0]);
+//       const neighbour = data[0].borders[0];
+//       // const neighbour = 'dhashsia';
+
+//       if (!neighbour) throw new Error(`No neighbour found`);
+
+//       //Country 2
+//       return getJSON(`https://restcountries.com/v2/alpha/${neighbour}`);
+//     })
+//     .then(data => renderCountry(data, 'neighbour'))
+//     .catch(err => {
+//       console.error(`${err}`);
+//       renderError(`Something went wrong.. ${err.message}. Try again!`);
+//     })
+//     .finally(() => {
+//       countriesContainer.style.opacity = 1;
+//     });
+// };
+
+// btn.addEventListener('click', function () {
+//   getCountryData('germany');
+// });
+
+// getCountryData('philippines');
+
+//Coding Challenge 1
+const whereAmI = function (lat, lng) {
+  fetch(`https://geocode.xyz/${lat},${lng}?geoit=json `)
+    .then(response => {
+      if (!response.ok) throw new Error(`${response.status}.. Try again later`);
+      return response.json();
+    })
     .then(data => {
-      renderCountry(data[0]);
-      const neighbour = data[0].borders[0];
-      // const neighbour = 'dhashsia';
-
-      if (!neighbour) throw new Error(`No neighbour found`);
-
-      //Country 2
-      return getJSON(`https://restcountries.com/v2/alpha/${neighbour}`);
+      console.log(data);
+      console.log(`You are in ${data.city}, ${data.country}`);
+      return fetch(`https://restcountries.com/v2/name/${data.country}`);
     })
-    .then(data => renderCountry(data, 'neighbour'))
+    .then(response => {
+      if (!response.ok)
+        throw new Error(`Country not found.  ${response.status}`);
+      return response.json();
+    })
+    .then(data => renderCountry(data[0]))
     .catch(err => {
-      console.error(`${err}`);
-      renderError(`Something went wrong.. ${err.message}. Try again!`);
-    })
-    .finally(() => {
-      countriesContainer.style.opacity = 1;
+      console.error(`${err.message} Catch error`);
     });
 };
 
-btn.addEventListener('click', function () {
-  getCountryData('germany');
-});
-
-getCountryData('philippines');
+whereAmI(52.508, 13.381);
+whereAmI(19.037, 72.873);
+whereAmI(-33.933, 18.474);
