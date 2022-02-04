@@ -172,28 +172,44 @@ const renderCountry = function (data, className = '') {
 // getCountryData('philippines');
 
 //Coding Challenge 1
-const whereAmI = function (lat, lng) {
-  fetch(`https://geocode.xyz/${lat},${lng}?geoit=json `)
-    .then(response => {
-      if (!response.ok) throw new Error(`${response.status}.. Try again later`);
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      console.log(`You are in ${data.city}, ${data.country}`);
-      return fetch(`https://restcountries.com/v2/name/${data.country}`);
-    })
-    .then(response => {
-      if (!response.ok)
-        throw new Error(`Country not found.  ${response.status}`);
-      return response.json();
-    })
-    .then(data => renderCountry(data[0]))
-    .catch(err => {
-      console.error(`${err.message} Catch error`);
-    });
-};
+// const whereAmI = function (lat, lng) {
+//   fetch(`https://geocode.xyz/${lat},${lng}?geoit=json `)
+//     .then(response => {
+//       if (!response.ok) throw new Error(`${response.status}.. Try again later`);
+//       return response.json();
+//     })
+//     .then(data => {
+//       console.log(data);
+//       console.log(`You are in ${data.city}, ${data.country}`);
+//       return fetch(`https://restcountries.com/v2/name/${data.country}`);
+//     })
+//     .then(response => {
+//       if (!response.ok)
+//         throw new Error(`Country not found.  ${response.status}`);
+//       return response.json();
+//     })
+//     .then(data => renderCountry(data[0]))
+//     .catch(err => {
+//       console.error(`${err.message} Catch error`);
+//     });
+// };
 
-whereAmI(52.508, 13.381);
-whereAmI(19.037, 72.873);
-whereAmI(-33.933, 18.474);
+// whereAmI(52.508, 13.381);
+// whereAmI(19.037, 72.873);
+// whereAmI(-33.933, 18.474);
+
+//Event Loop
+console.log('Test start');
+setTimeout(() => console.log('Set time out log'), 0);
+Promise.resolve('I am in the microtasks queue!').then(res => console.log(res));
+console.log('Test ended');
+
+//
+console.log('Test start');
+setTimeout(() => console.log('Set time out log'), 0);
+Promise.resolve('I am in the microtasks queue and taking some time...').then(
+  res => {
+    for (let i = 0; i <= 10000; i++) console.log(res);
+  }
+);
+console.log('Test ended');
