@@ -291,3 +291,34 @@ const renderCountry = function (data, className = '') {
 // };
 
 // btn.addEventListener('click', whereAmI);
+
+//Async Await
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+const whereAmI = async function () {
+  //Getting the geolocation
+  const geoLocation = await getPosition();
+  // console.log(geoLocation);
+
+  //Reverse Geocoding
+  const { latitude: lat, longitude: lng } = geoLocation.coords;
+
+  const location = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+  const locationData = await location.json();
+  console.log(locationData);
+
+  //Get Country Data
+  const countryRes = await fetch(
+    `https://restcountries.com/v2/name/${locationData.country}`
+  );
+  const countryData = await countryRes.json();
+  console.log(countryData);
+  renderCountry(countryData[0]);
+};
+
+whereAmI();
