@@ -95,10 +95,10 @@ const renderCountry = function (data, className = '') {
 // const request = fetch('https://restcountries.com/v2/name/portugal');
 // // console.log(request);
 
-// const renderError = function (msg) {
-//   countriesContainer.insertAdjacentText('beforeend', msg);
-//   // countriesContainer.style.opacity = 1;
-// };
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  // countriesContainer.style.opacity = 1;
+};
 
 // const getJSON = function (url, errorMessage = 'Something went wrong') {
 //   return fetch(url).then(response => {
@@ -301,24 +301,34 @@ const getPosition = function () {
 };
 
 const whereAmI = async function () {
-  //Getting the geolocation
-  const geoLocation = await getPosition();
-  // console.log(geoLocation);
+  try {
+    //Getting the geolocation
+    const geoLocation = await getPosition();
+    // console.log(geoLocation);
 
-  //Reverse Geocoding
-  const { latitude: lat, longitude: lng } = geoLocation.coords;
+    //Reverse Geocoding
+    const { latitude: lat, longitude: lng } = geoLocation.coords;
 
-  const location = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
-  const locationData = await location.json();
-  console.log(locationData);
+    const location = await fetch(
+      `https://geocode.xyz/${lat},${lng}?geoit=json`
+    );
+    if (!location.ok) throw new Error('Problem getting location');
 
-  //Get Country Data
-  const countryRes = await fetch(
-    `https://restcountries.com/v2/name/${locationData.country}`
-  );
-  const countryData = await countryRes.json();
-  console.log(countryData);
-  renderCountry(countryData[0]);
+    const locationData = await location.json();
+    console.log(locationData);
+
+    //Get Country Data
+    const countryRes = await fetch(
+      `https://restcountries.com/v2/name/${locationData.country}`
+    );
+    const countryData = await countryRes.json();
+    if (!countryData.ok) throw new Error('Problem getting country');
+
+    renderCountry(countryData[0]);
+  } catch (err) {
+    console.error(err.message);
+    renderError(`${err.message}`);
+  }
 };
 
 whereAmI();
