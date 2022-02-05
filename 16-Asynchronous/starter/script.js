@@ -199,17 +199,50 @@ const renderCountry = function (data, className = '') {
 // whereAmI(-33.933, 18.474);
 
 //Event Loop
-console.log('Test start');
-setTimeout(() => console.log('Set time out log'), 0);
-Promise.resolve('I am in the microtasks queue!').then(res => console.log(res));
-console.log('Test ended');
+// console.log('Test start');
+// setTimeout(() => console.log('Set time out log'), 0);
+// Promise.resolve('I am in the microtasks queue!').then(res => console.log(res));
+// console.log('Test ended');
 
-//
-console.log('Test start');
-setTimeout(() => console.log('Set time out log'), 0);
-Promise.resolve('I am in the microtasks queue and taking some time...').then(
-  res => {
-    for (let i = 0; i <= 10000; i++) console.log(res);
-  }
-);
-console.log('Test ended');
+// //
+// console.log('Test start');
+// setTimeout(() => console.log('Set time out log'), 0);
+// Promise.resolve('I am in the microtasks queue and taking some time...').then(
+//   res => {
+//     for (let i = 0; i <= 10000; i++) console.log(res);
+//   }
+// );
+// console.log('Test ended');
+
+//Building a Promise
+
+const lotteryPromise = new Promise(function (resolve, reject) {
+  console.log('Drawing lots...');
+  setTimeout(function () {
+    if (Math.random() >= 0.5) {
+      resolve('You win! 💰');
+    } else {
+      reject(new Error('You lose! 😛'));
+    }
+  }, 3000);
+});
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+
+//Promisifying setTimeOut
+
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+wait(3)
+  .then(res => {
+    console.log('I waited for 3 seconds');
+    return wait(1);
+  })
+  .then(res => console.log('Another second'));
+
+//Faster way for resolved or rejected promise
+Promise.resolve('Resolved').then(res => console.log(res));
+Promise.reject(new Error('Problem')).catch(err => console.error(err));
