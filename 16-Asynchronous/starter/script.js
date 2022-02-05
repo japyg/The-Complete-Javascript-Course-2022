@@ -249,45 +249,45 @@ const renderCountry = function (data, className = '') {
 
 //Promisifying the Geolocation API
 
-const getPosition = function () {
-  return new Promise(function (resolve, reject) {
-    //   navigator.geolocation.getCurrentPosition(
-    //     position => resolve(position),
-    //     err => reject(err)
-    //   );
-    // });
+// const getPosition = function () {
+//   return new Promise(function (resolve, reject) {
+//     //   navigator.geolocation.getCurrentPosition(
+//     //     position => resolve(position),
+//     //     err => reject(err)
+//     //   );
+//     // });
 
-    navigator.geolocation.getCurrentPosition(resolve, reject);
-  });
-};
+//     navigator.geolocation.getCurrentPosition(resolve, reject);
+//   });
+// };
 
 // getPosition().then(res => console.log(res));
 
-const whereAmI = function () {
-  getPosition()
-    .then(pos => {
-      const { latitude: lat, longitude: lng } = pos.coords;
+// const whereAmI = function () {
+//   getPosition()
+//     .then(pos => {
+//       const { latitude: lat, longitude: lng } = pos.coords;
 
-      return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json `);
-    })
-    .then(response => {
-      if (!response.ok) throw new Error(`${response.status}.. Try again later`);
-      return response.json();
-    })
-    .then(data => {
-      console.log(data);
-      console.log(`You are in ${data.city}, ${data.country}`);
-      return fetch(`https://restcountries.com/v2/name/${data.country}`);
-    })
-    .then(response => {
-      if (!response.ok)
-        throw new Error(`Country not found.  ${response.status}`);
-      return response.json();
-    })
-    .then(data => renderCountry(data[0]))
-    .catch(err => {
-      console.error(`${err.message} Catch error`);
-    });
-};
+//       return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json `);
+//     })
+//     .then(response => {
+//       if (!response.ok) throw new Error(`${response.status}.. Try again later`);
+//       return response.json();
+//     })
+//     .then(data => {
+//       console.log(data);
+//       console.log(`You are in ${data.city}, ${data.country}`);
+//       return fetch(`https://restcountries.com/v2/name/${data.country}`);
+//     })
+//     .then(response => {
+//       if (!response.ok)
+//         throw new Error(`Country not found.  ${response.status}`);
+//       return response.json();
+//     })
+//     .then(data => renderCountry(data[0]))
+//     .catch(err => {
+//       console.error(`${err.message} Catch error`);
+//     });
+// };
 
-btn.addEventListener('click', whereAmI);
+// btn.addEventListener('click', whereAmI);
