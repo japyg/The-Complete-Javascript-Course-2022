@@ -216,33 +216,78 @@ const renderCountry = function (data, className = '') {
 
 //Building a Promise
 
-const lotteryPromise = new Promise(function (resolve, reject) {
-  console.log('Drawing lots...');
-  setTimeout(function () {
-    if (Math.random() >= 0.5) {
-      resolve('You win! 💰');
-    } else {
-      reject(new Error('You lose! 😛'));
-    }
-  }, 3000);
-});
-lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+// const lotteryPromise = new Promise(function (resolve, reject) {
+//   console.log('Drawing lots...');
+//   setTimeout(function () {
+//     if (Math.random() >= 0.5) {
+//       resolve('You win! 💰');
+//     } else {
+//       reject(new Error('You lose! 😛'));
+//     }
+//   }, 3000);
+// });
+// lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
 
-//Promisifying setTimeOut
+// //Promisifying setTimeOut
 
-const wait = function (seconds) {
-  return new Promise(function (resolve) {
-    setTimeout(resolve, seconds * 1000);
+// const wait = function (seconds) {
+//   return new Promise(function (resolve) {
+//     setTimeout(resolve, seconds * 1000);
+//   });
+// };
+
+// wait(3)
+//   .then(res => {
+//     console.log('I waited for 3 seconds');
+//     return wait(1);
+//   })
+//   .then(res => console.log('Another second'));
+
+// //Faster way for resolved or rejected promise
+// Promise.resolve('Resolved').then(res => console.log(res));
+// Promise.reject(new Error('Problem')).catch(err => console.error(err));
+
+//Promisifying the Geolocation API
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    //   navigator.geolocation.getCurrentPosition(
+    //     position => resolve(position),
+    //     err => reject(err)
+    //   );
+    // });
+
+    navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
 
-wait(3)
-  .then(res => {
-    console.log('I waited for 3 seconds');
-    return wait(1);
-  })
-  .then(res => console.log('Another second'));
+// getPosition().then(res => console.log(res));
 
-//Faster way for resolved or rejected promise
-Promise.resolve('Resolved').then(res => console.log(res));
-Promise.reject(new Error('Problem')).catch(err => console.error(err));
+const whereAmI = function () {
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+
+      return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json `);
+    })
+    .then(response => {
+      if (!response.ok) throw new Error(`${response.status}.. Try again later`);
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      console.log(`You are in ${data.city}, ${data.country}`);
+      return fetch(`https://restcountries.com/v2/name/${data.country}`);
+    })
+    .then(response => {
+      if (!response.ok)
+        throw new Error(`Country not found.  ${response.status}`);
+      return response.json();
+    })
+    .then(data => renderCountry(data[0]))
+    .catch(err => {
+      console.error(`${err.message} Catch error`);
+    });
+};
+
+btn.addEventListener('click', whereAmI);
