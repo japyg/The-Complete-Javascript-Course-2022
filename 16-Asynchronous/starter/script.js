@@ -312,23 +312,44 @@ const whereAmI = async function () {
     const location = await fetch(
       `https://geocode.xyz/${lat},${lng}?geoit=json`
     );
-    if (!location.ok) throw new Error('Problem getting location');
+    if (location.ok === false) throw new Error('Problem getting location');
 
     const locationData = await location.json();
-    console.log(locationData);
+    // console.log(locationData.country);
 
     //Get Country Data
     const countryRes = await fetch(
       `https://restcountries.com/v2/name/${locationData.country}`
     );
     const countryData = await countryRes.json();
-    if (!countryData.ok) throw new Error('Problem getting country');
+    if (!countryRes.ok) throw new Error('Problem getting country');
+    // console.log(countryData);
 
     renderCountry(countryData[0]);
+    return `You are in ${locationData.city}, ${locationData.country}`;
   } catch (err) {
     console.error(err.message);
     renderError(`${err.message}`);
+
+    //Reject promise returned from async function
+    throw err;
   }
 };
 
-whereAmI();
+// whereAmI();
+
+//to convert this to async await, use IIFE
+// whereAmI()
+//   .then(city => console.log(city))
+//   .catch(err => console.error(err));
+
+//IIFE / Immediately-invoked Function Expression
+(async function () {
+  try {
+    const city = await whereAmI();
+    console.log(city);
+  } catch (err) {
+    console.error(err);
+  }
+  console.log('Finished getting location');
+})();
