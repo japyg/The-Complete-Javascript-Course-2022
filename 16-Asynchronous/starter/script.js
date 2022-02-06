@@ -354,6 +354,8 @@ const getJSON = function (url, errorMessage = 'Something went wrong') {
 //   console.log('Finished getting location');
 // })();
 
+//Promise.all
+
 // const get3Countries = async function (c1, c2, c3) {
 // try {
 // const [data1] = await getJSON(`https://restcountries.com/v2/name/${c1}`);
@@ -385,13 +387,13 @@ const getJSON = function (url, errorMessage = 'Something went wrong') {
 //   console.log(res[0]);
 // })();
 
-const timeout = function (seconds) {
-  return new Promise(function (_, reject) {
-    setTimeout(function () {
-      reject(new Error('Whoops! Request took too long'));
-    }, seconds * 1000);
-  });
-};
+// const timeout = function (seconds) {
+//   return new Promise(function (_, reject) {
+//     setTimeout(function () {
+//       reject(new Error('Whoops! Request took too long'));
+//     }, seconds * 1000);
+//   });
+// };
 
 // (async function () {
 //   const res = await Promise.race([
@@ -402,19 +404,19 @@ const timeout = function (seconds) {
 // })();
 
 //Promise.allSettled
-Promise.allSettled([
-  Promise.resolve('Success'),
-  Promise.reject('ERROR'),
-  Promise.reject('Another ERROR'),
-  Promise.resolve('Another Success'),
-]).then(res =>
-  res.map(res => console.log(`Status: ${res.status} Reason: ${res.reason}`))
-);
+// Promise.allSettled([
+//   Promise.resolve('Success'),
+//   Promise.reject('ERROR'),
+//   Promise.reject('Another ERROR'),
+//   Promise.resolve('Another Success'),
+// ]).then(res =>
+//   res.map(res => console.log(`Status: ${res.status} Reason: ${res.reason}`))
+// );
 
-//Promise.any
-Promise.any([
-  Promise.resolve('Success'),
-  Promise.reject('ERROR'),
-  Promise.reject('Another ERROR'),
-  Promise.resolve('Another Success'),
-]).then(res => console.log(res));
+// //Promise.any
+// Promise.any([
+//   Promise.resolve('Success'),
+//   Promise.reject('ERROR'),
+//   Promise.reject('Another ERROR'),
+//   Promise.resolve('Another Success'),
+// ]).then(res => console.log(res));
