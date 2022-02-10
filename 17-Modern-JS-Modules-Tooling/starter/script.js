@@ -7,12 +7,16 @@
 // // console.log('Importing module');
 
 // //Importing everything
-// import * as ShoppingCart from './shoppingCart.js';
+import * as ShoppingCart from './shoppingCart.js';
 // // ShoppingCart.addToCart('shoes', 7);
 // // console.log(ShoppingCart);
 
-// // import add from './shoppingCart.js';
-// // add('brocolli', 5);
+import add, { cart } from './shoppingCart.js';
+add('pizza', 2);
+add('bread', 5);
+add('apples', 4);
+
+console.log(cart);
 
 // //Top-level Await
 
@@ -67,6 +71,7 @@
 // console.log(ShoppingCart2);
 // console.log(ShoppingCart2.shippingCost);
 
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
 import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
 
 const state = {
@@ -83,3 +88,7 @@ const stateDeepClone = cloneDeep(state);
 state.user.loggedIn = false;
 
 console.log(stateDeepClone);
+
+if (module.hot) {
+  module.hot.accept();
+}
